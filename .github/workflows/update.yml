@@ -2,19 +2,18 @@ name: Update Marinos Data
 
 on:
   schedule:
-    # 毎週土曜・日曜・水曜の日本時間 17:00, 20:00, 22:00 ごろに自動実行 (UTC換算)
-    - cron: '0 7,10,12 * * 0,3,6'
-  workflow_dispatch: # 手動で「今すぐ実行」ボタンを押せるようにする設定
+    - cron: '0 8,11,13,14 * * 0,3,6'
+  workflow_dispatch:
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのコードをチェックアウト
-        uses: actions.checkout@v4
+        uses: actions/checkout@v4
 
       - name: Python環境のセットアップ
-        uses: actions.setup-python@v5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
