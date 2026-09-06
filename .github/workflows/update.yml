@@ -1,13 +1,20 @@
 name: Update Marinos Data
 
 on:
+  workflow_dispatch: # 手動実行ボタン
   schedule:
-    - cron: '0 7,10,12 * * 0,3,6'
-  workflow_dispatch:
+    # 毎週水曜・土曜・日曜に自動実行（JST換算）
+    # 水曜日: JST 22:00 (UTC 13:00)
+    - cron: '0 13 * * 3'
+    # 土曜日・日曜日: JST 18:00, 22:00 (UTC 09:00, 13:00)
+    - cron: '0 9,13 * * 0,6'
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: リポジトリのコードをチェックアウト
         uses: actions/checkout@v4
@@ -15,19 +22,19 @@ jobs:
       - name: Python環境のセットアップ
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: 必要なライブラリをインストール
         run: |
-          pip install requests beautifulsoup4
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: スクリプト実行
-        run: |
-          python update_points.py
+        run: python update_points.py
 
-      - name: 変更があれば自動コミット＆プッシュ
+      - name: 変更があればコミットしてプッシュ
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update points data [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update points [skip ci]" && git push origin main)
