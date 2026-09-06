@@ -1,29 +1,33 @@
-import json
-import os
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+name: Update Marinos Data
 
-# 1. 既存の data.json を読み込む
-data_file = 'data.json'
-if os.path.exists(data_file):
-    with open(data_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-else:
-    raise FileNotFoundError("data.json が見つかりません。")
+on:
+  schedule:
+    - cron: '0 7,10,12 * * 0,3,6'
+  workflow_dispatch:
 
-# 2. 試合結果・勝ち点の取得ロジック
-# （※外部サイトからの取得や公式データ等の更新処理をここで行います）
-# ここでは動作テスト用に、既存データが存在することを確認しつつ日付を更新する構成にしています
-current_points = data.get("currentPoints", [])
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリのコードをチェックアウト
+        uses: actions/checkout@v4
 
-# 例: データ更新日時の更新
-today_str = datetime.now().strftime('%Y-%m-%d %H:%M')
-data["updated_at"] = today_str
-data["currentSeasonLabel"] = f"2026シーズン (第{len(current_points)}節終了時点 / 自動更新: {today_str})"
+      - name: Python環境のセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-# 3. data.json を上書き保存
-with open(data_file, 'w', encoding='utf-8') as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
+      - name: 必要なライブラリをインストール
+        run: |
+          pip install requests beautifulsoup4
 
-print("data.json の更新が完了しました。")
+      - name: スクリプト実行
+        run: |
+          python update_points.py
+
+      - name: 変更があれば自動コミット＆プッシュ
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update points data [skip ci]" && git push)
