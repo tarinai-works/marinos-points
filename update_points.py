@@ -11,10 +11,9 @@ JST = timezone(timedelta(hours=9))
 
 def fetch_marinos_matches():
     """
-    スポーツナビやJリーグ関連速報等から横浜F・マリノスの直近試合結果をスクレイピングする関数。
-    ※ 取得先のHTML構造変更に耐えられるよう、正規表現と安全なフォールバックを備えています。
+    スポーツナビから横浜F・マリノスの直近試合結果をスクレイピングする関数。
+    J1リーグ戦のみを抽出し、カップ戦（ルヴァン、天皇杯、ACL等）を除外します。
     """
-    # 取得用URL（スポーツナビ J1日程・結果）
     url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -27,18 +26,23 @@ def fetch_marinos_matches():
         res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
 
-        # 試合行（テーブル行またはリストアイテム）の解析
+        # 試合日程テーブルの各行を走査
         rows = soup.find_all("tr")
         for row in rows:
             text = row.get_text()
+
+            # J1リーグ戦以外の大会（ルヴァン杯、天皇杯、ACLなど）はスキップ
+            # 大会欄に「ルヴァン」「天皇杯」「ACL」等が含まれている行、またはJ1表記がない場合は除外
+            if any(cup in text for cup in ["ルヴァン", "天皇杯", "ACL", "ACLE"]):
+                continue
+
             # スコア表記（例: 2 - 1, 0 - 0）を探索
             score_match = re.search(r"(\d+)\s*[-–]\s*(\d+)", text)
             if score_match:
-                # 横浜FMがホーム側かアウェイ側かを判定して得失点比較
                 score1 = int(score_match.group(1))
                 score2 = int(score_match.group(2))
-                
-                # スコア前後のチーム名から横浜FMの位置を特定
+
+                # ホーム/アウェイの判定
                 is_home = text.find("横浜FM") < text.find(score_match.group(0)) if "横浜FM" in text else True
                 marinos_score = score1 if is_home else score2
                 opponent_score = score2 if is_home else score1
@@ -70,7 +74,6 @@ def update_data():
     # 試合結果を取得
     new_results = fetch_marinos_matches()
 
-    # 取得に成功し、かつ1試合以上の結果が取れた場合のみ反映
     if new_results and len(new_results) > 0:
         cumulative = []
         current = 0
@@ -87,9 +90,8 @@ def update_data():
         data["currentSeasonLabel"] = f"2026シーズン (第{completed_rounds}節終了時点)"
         print(f"最新データを反映しました: 第{completed_rounds}節終了時点（勝ち点: {current}）")
     else:
-        print("最新の試合結果の取得が行えなかったため、既存の currentPoints を維持します。")
+        print("試合結果が取得できなかったため、既存データを維持します。")
 
-    # 更新日時の更新
     now_str = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
     data["updated_at"] = now_str
 
