@@ -11,8 +11,8 @@ JST = timezone(timedelta(hours=9))
 
 def fetch_marinos_matches():
     """
-    スポーツナビから横浜F・マリノスの直近試合結果をスクレイピングする関数。
-    J1リーグ戦のみを抽出し、カップ戦（ルヴァン、天皇杯、ACL等）を除外します。
+    スポーツナビから横浜F・マリノスの公式戦一覧を取得。
+    J1リーグ戦かつ「試合終了」となっている確定スコアのみを抽出します。
     """
     url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
@@ -26,24 +26,40 @@ def fetch_marinos_matches():
         res.raise_for_status()
         soup = BeautifulSoup(res.text, "html.parser")
 
-        # 試合日程テーブルの各行を走査
         rows = soup.find_all("tr")
         for row in rows:
             text = row.get_text()
 
-            # J1リーグ戦以外の大会（ルヴァン杯、天皇杯、ACLなど）はスキップ
-            # 大会欄に「ルヴァン」「天皇杯」「ACL」等が含まれている行、またはJ1表記がない場合は除外
-            if any(cup in text for cup in ["ルヴァン", "天皇杯", "ACL", "ACLE"]):
+            # J1リーグかつ第○節の表記がある行に限定
+            is_j1 = ("J1" in text or "明治安田" in text) and ("節" in text)
+            is_cup = any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO"])
+            if not is_j1 or is_cup:
                 continue
 
-            # スコア表記（例: 2 - 1, 0 - 0）を探索
-            score_match = re.search(r"(\d+)\s*[-–]\s*(\d+)", text)
-            if score_match:
-                score1 = int(score_match.group(1))
-                score2 = int(score_match.group(2))
+            # 未消化の試合（試合前・予定）は除外。「終了」の文字がある行、またはスコア確定行のみを対象とする
+            # スポーツナビでは終了した試合に「終了」または勝敗マークが入ります
+            if "終了" not in text and "結果" not in text and not any(mark in text for mark in ["○", "●", "△", "PK"]):
+                # 時間表記（例: 19:00）のみでまだ行われていない試合をスキップ
+                continue
 
-                # ホーム/アウェイの判定
-                is_home = text.find("横浜FM") < text.find(score_match.group(0)) if "横浜FM" in text else True
+            # スコア部分を厳密に抽出（「数字 - 数字」かつ、キックオフ時刻の 00 等と誤判定しない）
+            # 通常スコアリンクやスコア表示要素（クラス名やtd要素）を走査
+            score_elem = row.find(string=re.compile(r"^\s*(\d+)\s*[-–]\s*(\d+)\s*$"))
+            score1, score2 = None, None
+
+            if score_elem:
+                m = re.search(r"(\d+)\s*[-–]\s*(\d+)", score_elem)
+                score1, score2 = int(m.group(1)), int(m.group(2))
+            else:
+                # 行全体テキストから探索（ただし 19:00 のような時刻を除外するため「 - 」前後の数字）
+                # スポーツナビのスコアは通常 0〜9 程度の点数
+                matches = re.findall(r"(?<!\d:)(\b[0-9]\b)\s*[-–]\s*(\b[0-9]\b)(?!\d)", text)
+                if matches:
+                    score1, score2 = int(matches[0][0]), int(matches[0][1])
+
+            if score1 is not None and score2 is not None:
+                # 横浜FMのホーム/アウェイ判定
+                is_home = text.find("横浜FM") < text.find(f"{score1}") if "横浜FM" in text else True
                 marinos_score = score1 if is_home else score2
                 opponent_score = score2 if is_home else score1
 
@@ -71,7 +87,6 @@ def update_data():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 試合結果を取得
     new_results = fetch_marinos_matches()
 
     if new_results and len(new_results) > 0:
@@ -81,7 +96,6 @@ def update_data():
             current += pts
             cumulative.append(current)
 
-        # 未消化の節は None で埋める
         while len(cumulative) < TOTAL_ROUNDS:
             cumulative.append(None)
 
