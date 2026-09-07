@@ -6,13 +6,14 @@ import requests
 from bs4 import BeautifulSoup
 
 DATA_FILE = "data.json"
-TOTAL_ROUNDS = 38
+TOTAL_MATCHES = 38
 JST = timezone(timedelta(hours=9))
 
 def fetch_marinos_matches():
     """
-    スポーツナビから横浜F・マリノスの公式戦一覧を取得。
-    J1リーグ戦かつ「試合終了」となっている確定スコアのみを抽出します。
+    スポーツナビの日程表から横浜F・マリノスの公式戦一覧を取得。
+    J1リーグ戦かつ「試合終了」の確定スコアのみを、開催された時系列順に抽出します。
+    日程の前後（前倒し・延期）があっても、実際に消化された順番で累積計算されます。
     """
     url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
@@ -36,14 +37,11 @@ def fetch_marinos_matches():
             if not is_j1 or is_cup:
                 continue
 
-            # 未消化の試合（試合前・予定）は除外。「終了」の文字がある行、またはスコア確定行のみを対象とする
-            # スポーツナビでは終了した試合に「終了」または勝敗マークが入ります
+            # 未消化（予定）の試合はスキップ。「終了」「結果」または勝敗記号がある確定行のみ
             if "終了" not in text and "結果" not in text and not any(mark in text for mark in ["○", "●", "△", "PK"]):
-                # 時間表記（例: 19:00）のみでまだ行われていない試合をスキップ
                 continue
 
-            # スコア部分を厳密に抽出（「数字 - 数字」かつ、キックオフ時刻の 00 等と誤判定しない）
-            # 通常スコアリンクやスコア表示要素（クラス名やtd要素）を走査
+            # スコアの抽出
             score_elem = row.find(string=re.compile(r"^\s*(\d+)\s*[-–]\s*(\d+)\s*$"))
             score1, score2 = None, None
 
@@ -51,26 +49,26 @@ def fetch_marinos_matches():
                 m = re.search(r"(\d+)\s*[-–]\s*(\d+)", score_elem)
                 score1, score2 = int(m.group(1)), int(m.group(2))
             else:
-                # 行全体テキストから探索（ただし 19:00 のような時刻を除外するため「 - 」前後の数字）
-                # スポーツナビのスコアは通常 0〜9 程度の点数
                 matches = re.findall(r"(?<!\d:)(\b[0-9]\b)\s*[-–]\s*(\b[0-9]\b)(?!\d)", text)
                 if matches:
                     score1, score2 = int(matches[0][0]), int(matches[0][1])
 
             if score1 is not None and score2 is not None:
-                # 横浜FMのホーム/アウェイ判定
                 is_home = text.find("横浜FM") < text.find(f"{score1}") if "横浜FM" in text else True
                 marinos_score = score1 if is_home else score2
                 opponent_score = score2 if is_home else score1
 
                 if marinos_score > opponent_score:
-                    match_points.append(3)
+                    pts = 3
                 elif marinos_score == opponent_score:
-                    match_points.append(1)
+                    pts = 1
                 else:
-                    match_points.append(0)
+                    pts = 0
 
-                if len(match_points) >= TOTAL_ROUNDS:
+                # 開催順に追加
+                match_points.append(pts)
+
+                if len(match_points) >= TOTAL_MATCHES:
                     break
 
     except Exception as e:
@@ -87,22 +85,23 @@ def update_data():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    new_results = fetch_marinos_matches()
+    match_points = fetch_marinos_matches()
 
-    if new_results and len(new_results) > 0:
+    if match_points and len(match_points) > 0:
         cumulative = []
         current = 0
-        for pts in new_results:
+        for pts in match_points:
             current += pts
             cumulative.append(current)
 
-        while len(cumulative) < TOTAL_ROUNDS:
+        # 未消化分は None で埋める
+        while len(cumulative) < TOTAL_MATCHES:
             cumulative.append(None)
 
-        completed_rounds = len(new_results)
+        played_count = len(match_points)
         data["currentPoints"] = cumulative
-        data["currentSeasonLabel"] = f"2026シーズン (第{completed_rounds}節終了時点)"
-        print(f"最新データを反映しました: 第{completed_rounds}節終了時点（勝ち点: {current}）")
+        data["currentSeasonLabel"] = f"2026シーズン ({played_count}試合消化時点)"
+        print(f"最新データを反映しました: {played_count}試合消化時点（勝ち点: {current}）")
     else:
         print("試合結果が取得できなかったため、既存データを維持します。")
 
