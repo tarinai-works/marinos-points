@@ -12,8 +12,8 @@ JST = timezone(timedelta(hours=9))
 def fetch_marinos_matches():
     """
     スポーツナビの日程表から横浜F・マリノスの公式戦一覧を取得。
-    J1リーグ戦かつ「試合終了」の確定スコアのみを、開催された時系列順に抽出します。
-    日程の前後（前倒し・延期）があっても、実際に消化された順番で累積計算されます。
+    J1リーグの終了した試合を消化順に取得し、
+    スポーツナビ公式の勝敗マーク（○/●/△）をダイレクトに判定して正確な勝ち点を返します。
     """
     url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
@@ -37,37 +37,37 @@ def fetch_marinos_matches():
             if not is_j1 or is_cup:
                 continue
 
-            # 未消化（予定）の試合はスキップ。「終了」「結果」または勝敗記号がある確定行のみ
-            if "終了" not in text and "結果" not in text and not any(mark in text for mark in ["○", "●", "△", "PK"]):
+            # 未消化（予定）の試合はスキップ（確定マークまたは結果表記がある行のみ）
+            has_result_mark = any(m in text for m in ["○", "●", "△", "PK"])
+            if not has_result_mark and "終了" not in text and "結果" not in text:
                 continue
 
-            # スコアの抽出
-            score_elem = row.find(string=re.compile(r"^\s*(\d+)\s*[-–]\s*(\d+)\s*$"))
-            score1, score2 = None, None
+            # --- 最優先：スポーツナビの勝敗マークによる直接判定 ---
+            pts = None
+            if "○" in text:
+                pts = 3  # 勝利
+            elif "△" in text:
+                pts = 1  # 引分
+            elif "●" in text:
+                pts = 0  # 敗戦
 
-            if score_elem:
-                m = re.search(r"(\d+)\s*[-–]\s*(\d+)", score_elem)
-                score1, score2 = int(m.group(1)), int(m.group(2))
-            else:
+            # 勝敗マークがテキストから拾えなかった場合の予備判定（スコア解析）
+            if pts is None:
                 matches = re.findall(r"(?<!\d:)(\b[0-9]\b)\s*[-–]\s*(\b[0-9]\b)(?!\d)", text)
                 if matches:
-                    score1, score2 = int(matches[0][0]), int(matches[0][1])
+                    s1, s2 = int(matches[0][0]), int(matches[0][1])
+                    if s1 == s2:
+                        pts = 1
+                    else:
+                        # アウェイ（@表記または横浜FMが右側）を正確に判定
+                        is_away = ("@" in text) or (text.find("横浜FM") > text.find(f"{s1}") if "横浜FM" in text else False)
+                        marinos_score = s2 if is_away else s1
+                        opponent_score = s1 if is_away else s2
+                        pts = 3 if marinos_score > opponent_score else 0
 
-            if score1 is not None and score2 is not None:
-                is_home = text.find("横浜FM") < text.find(f"{score1}") if "横浜FM" in text else True
-                marinos_score = score1 if is_home else score2
-                opponent_score = score2 if is_home else score1
-
-                if marinos_score > opponent_score:
-                    pts = 3
-                elif marinos_score == opponent_score:
-                    pts = 1
-                else:
-                    pts = 0
-
-                # 開催順に追加
+            # 有効な試合結果であれば追加
+            if pts is not None:
                 match_points.append(pts)
-
                 if len(match_points) >= TOTAL_MATCHES:
                     break
 
@@ -94,14 +94,14 @@ def update_data():
             current += pts
             cumulative.append(current)
 
-        # 未消化分は None で埋める
+        # 38戦分を None で埋める
         while len(cumulative) < TOTAL_MATCHES:
             cumulative.append(None)
 
         played_count = len(match_points)
         data["currentPoints"] = cumulative
-        data["currentSeasonLabel"] = f"2026シーズン ({played_count}試合消化時点)"
-        print(f"最新データを反映しました: {played_count}試合消化時点（勝ち点: {current}）")
+        data["currentSeasonLabel"] = f"2026 - 27 シーズン ({played_count}試合消化時点)"
+        print(f"最新データを正常に反映しました: {played_count}試合消化時点（獲得勝ち点推移: {cumulative[:played_count]}）")
     else:
         print("試合結果が取得できなかったため、既存データを維持します。")
 
