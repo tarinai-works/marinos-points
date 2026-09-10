@@ -11,19 +11,33 @@ JST = timezone(timedelta(hours=9))
 
 def fetch_marinos_matches():
     """
-    スポーツナビの月別日程を巡回し、J1リーグ戦の終了スコア・詳細情報を時系列順に抽出します。
+    今シーズンの開幕（8月）から「現在の年月」までの日程のみを巡回し、
+    終了済みのJ1リーグ戦スコアのみを正確に抽出します。
     """
     base_url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
 
-    # 2026年8月〜2027年6月
-    months = [f"2026{m:02d}" for m in range(8, 13)] + [f"2027{m:02d}" for m in range(1, 7)]
-    
+    now = datetime.now(JST)
+    current_year_month = int(now.strftime("%Y%m"))
+
+    # 開幕（2026年8月）から現在月までの月リストのみ生成（未来の月はアクセスしない）
+    candidate_months = []
+    # 2026年8月〜12月
+    for m in range(8, 13):
+        ym = 2026 * 100 + m
+        if ym <= current_year_month:
+            candidate_months.append(str(ym))
+    # 2027年1月〜6月
+    for m in range(1, 7):
+        ym = 2027 * 100 + m
+        if ym <= current_year_month:
+            candidate_months.append(str(ym))
+
     match_list = []
 
-    for month_str in months:
+    for month_str in candidate_months:
         url = f"{base_url}?gk=2&month={month_str}"
         try:
             res = requests.get(url, headers=headers, timeout=10)
@@ -35,25 +49,32 @@ def fetch_marinos_matches():
             for row in rows:
                 text = row.get_text()
 
-                # J1リーグ戦のみ対象
+                # J1リーグ節のみ対象
                 if not (("J1" in text or "明治安田" in text) and "節" in text):
                     continue
+                # カップ戦・未消化の除外
                 if any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO"]):
                     continue
+                if "vs" in text or "試合前" in text or "中止" in text or "延期" in text:
+                    continue
 
-                # スコア表記を抽出
-                score_match = re.search(r"(\d+)\s*[-–]\s*(\d+)", text)
+                # 厳格なスコア形式のみ抽出 (1桁〜2桁の得点 - 得点)
+                score_match = re.search(r"(\b\d{1,2}\b)\s*[-–]\s*(\b\d{1,2}\b)", text)
                 if not score_match:
+                    continue
+
+                # 時刻表示（例: 19:00 等）の誤検知を防止
+                if ":" in text[max(0, score_match.start() - 3):score_match.end() + 3]:
                     continue
 
                 s1 = int(score_match.group(1))
                 s2 = int(score_match.group(2))
 
-                # 第○節を抽出
+                # 第○節
                 sec_match = re.search(r"第?(\d+)\s*節", text)
                 section_str = f"第{sec_match.group(1)}節" if sec_match else f"{len(match_list) + 1}戦目"
 
-                # 日付を抽出（例: 8/7, 9/2 等）
+                # 日付
                 date_match = re.search(r"(\d{1,2}/\d{1,2})", text)
                 date_str = date_match.group(1) if date_match else ""
 
@@ -65,21 +86,17 @@ def fetch_marinos_matches():
                 if is_home:
                     marinos_score, opp_score = s1, s2
                     ha_str = "H"
-                    # 対戦相手の抽出（スコアより後ろのチーム名）
                     after_text = text[score_match.end():]
-                    opp_m = re.search(r"([^\s\d\(\)\[\]]+)", after_text)
+                    opp_m = re.search(r"([^\s\d\(\)\[\]\:\-]+)", after_text)
                     opponent = opp_m.group(1) if opp_m else "相手"
                 else:
                     marinos_score, opp_score = s2, s1
                     ha_str = "A"
-                    # 対戦相手の抽出（スコアより前のチーム名）
                     before_text = text[:pos_score]
-                    opp_m = re.findall(r"([^\s\d\(\)\[\]]+)", before_text)
-                    # 横浜FM以外の最後の単語を相手とする
+                    opp_m = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", before_text)
                     valid_opps = [w for w in opp_m if "J1" not in w and "節" not in w and "横浜" not in w]
                     opponent = valid_opps[-1] if valid_opps else "相手"
 
-                # 勝敗判定
                 if marinos_score > opp_score:
                     pts = 3
                     result_label = "WIN"
@@ -90,15 +107,13 @@ def fetch_marinos_matches():
                     pts = 0
                     result_label = "LOSE"
 
-                score_display = f"{marinos_score} - {opp_score}"
-
                 match_list.append({
                     "match_num": len(match_list) + 1,
                     "section": section_str,
                     "date": date_str,
                     "opponent": opponent,
                     "ha": ha_str,
-                    "score": score_display,
+                    "score": f"{marinos_score} - {opp_score}",
                     "result": result_label,
                     "pts": pts
                 })
@@ -108,9 +123,6 @@ def fetch_marinos_matches():
 
         except Exception as e:
             print(f"Error fetching month {month_str}: {e}")
-
-        if len(match_list) >= TOTAL_MATCHES:
-            break
 
     return match_list
 
@@ -124,7 +136,10 @@ def update_data():
 
     match_list = fetch_marinos_matches()
 
-    if match_list and len(match_list) > 0:
+    # 安全ガード: 取得件数が異常（0件、または急に20試合以上増えるなど）な場合は上書きしない
+    current_played = len([p for p in data.get("currentPoints", []) if p is not None])
+    
+    if match_list and len(match_list) >= current_played and len(match_list) <= current_played + 2:
         cumulative = []
         current = 0
         for m in match_list:
@@ -138,10 +153,10 @@ def update_data():
         played_count = len(match_list)
         data["currentPoints"] = cumulative
         data["currentSeasonLabel"] = f"2026 - 27 シーズン ({played_count}試合消化時点)"
-        data["matches"] = match_list  # 試合詳細スコアのリストを追加
-        print(f"更新成功: {played_count}試合消化（累計勝ち点: {current}）")
+        data["matches"] = match_list
+        print(f"安全ガード通過: {played_count}試合消化（勝ち点: {current}）を正常更新")
     else:
-        print("有効な試合スコアが取得できなかったため、既存データを維持します。")
+        print(f"安全ガード発動: 取得件数が異常値（{len(match_list) if match_list else 0}件）のため上書きを防止しました。")
 
     now_str = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
     data["updated_at"] = now_str
@@ -149,7 +164,7 @@ def update_data():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("data.json の更新処理が完了しました。")
+    print("data.json の整合性チェック・書き込みが完了しました。")
 
 
 if __name__ == "__main__":
