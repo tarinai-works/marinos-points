@@ -11,71 +11,76 @@ JST = timezone(timedelta(hours=9))
 
 def fetch_marinos_matches():
     """
-    スポーツナビの日程表から横浜F・マリノスの公式戦一覧を取得。
-    J1リーグの終了した試合を消化順に取得し、
-    スポーツナビ公式の勝敗マーク（○/●/△）をダイレクトに判定して正確な勝ち点を返します。
+    スポーツナビの月別日程を巡回し、J1リーグ戦の終了スコアを時系列順に正確に抽出します。
     """
-    url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
+    base_url = "https://soccer.yahoo.co.jp/jleague/category/j1/teams/124/schedule"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
 
-    match_points = []
+    # シーズン全月（8月〜翌年6月）のリスト
+    # 例: 202608, 202609 ... 202706
+    months = [f"2026{m:02d}" for m in range(8, 13)] + [f"2027{m:02d}" for m in range(1, 7)]
+    
+    match_results = []
 
-    try:
-        res = requests.get(url, headers=headers, timeout=10)
-        res.raise_for_status()
-        soup = BeautifulSoup(res.text, "html.parser")
-
-        rows = soup.find_all("tr")
-        for row in rows:
-            text = row.get_text()
-
-            # J1リーグかつ第○節の表記がある行に限定
-            is_j1 = ("J1" in text or "明治安田" in text) and ("節" in text)
-            is_cup = any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO"])
-            if not is_j1 or is_cup:
+    for month_str in months:
+        url = f"{base_url}?gk=2&month={month_str}"
+        try:
+            res = requests.get(url, headers=headers, timeout=10)
+            if res.status_code != 200:
                 continue
+            soup = BeautifulSoup(res.text, "html.parser")
 
-            # 未消化（予定）の試合はスキップ（確定マークまたは結果表記がある行のみ）
-            has_result_mark = any(m in text for m in ["○", "●", "△", "PK"])
-            if not has_result_mark and "終了" not in text and "結果" not in text:
-                continue
+            rows = soup.find_all("tr")
+            for row in rows:
+                text = row.get_text()
 
-            # --- 最優先：スポーツナビの勝敗マークによる直接判定 ---
-            pts = None
-            if "○" in text:
-                pts = 3  # 勝利
-            elif "△" in text:
-                pts = 1  # 引分
-            elif "●" in text:
-                pts = 0  # 敗戦
+                # J1リーグかつ第○節の表記がある行
+                if not (("J1" in text or "明治安田" in text) and "節" in text):
+                    continue
+                # カップ戦除外
+                if any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO"]):
+                    continue
 
-            # 勝敗マークがテキストから拾えなかった場合の予備判定（スコア解析）
-            if pts is None:
-                matches = re.findall(r"(?<!\d:)(\b[0-9]\b)\s*[-–]\s*(\b[0-9]\b)(?!\d)", text)
-                if matches:
-                    s1, s2 = int(matches[0][0]), int(matches[0][1])
-                    if s1 == s2:
-                        pts = 1
-                    else:
-                        # アウェイ（@表記または横浜FMが右側）を正確に判定
-                        is_away = ("@" in text) or (text.find("横浜FM") > text.find(f"{s1}") if "横浜FM" in text else False)
-                        marinos_score = s2 if is_away else s1
-                        opponent_score = s1 if is_away else s2
-                        pts = 3 if marinos_score > opponent_score else 0
+                # スコア表記（例: "1 - 0", "0 - 2"）を抽出
+                score_match = re.search(r"(\d+)\s*[-–]\s*(\d+)", text)
+                if not score_match:
+                    continue  # 試合前（キックオフ時刻のみ）の行はスキップ
 
-            # 有効な試合結果であれば追加
-            if pts is not None:
-                match_points.append(pts)
-                if len(match_points) >= TOTAL_MATCHES:
+                s1 = int(score_match.group(1))
+                s2 = int(score_match.group(2))
+
+                # スコアの前後に横浜FMがあるかでホーム/アウェイを判定
+                # 横浜FMがスコアより前ならホーム（左がマリノス得点）
+                pos_yfm = text.find("横浜FM")
+                pos_score = score_match.start()
+
+                if pos_yfm != -1 and pos_yfm < pos_score:
+                    # ホーム戦: s1がマリノス、s2が相手
+                    marinos_score, opp_score = s1, s2
+                else:
+                    # アウェイ戦: s2がマリノス、s1が相手
+                    marinos_score, opp_score = s2, s1
+
+                if marinos_score > opp_score:
+                    pts = 3
+                elif marinos_score == opp_score:
+                    pts = 1
+                else:
+                    pts = 0
+
+                match_results.append(pts)
+                if len(match_results) >= TOTAL_MATCHES:
                     break
 
-    except Exception as e:
-        print(f"スクレイピング中にエラーが発生しました: {e}")
-        return None
+        except Exception as e:
+            print(f"Error fetching month {month_str}: {e}")
 
-    return match_points
+        if len(match_results) >= TOTAL_MATCHES:
+            break
+
+    return match_results
 
 
 def update_data():
@@ -94,16 +99,15 @@ def update_data():
             current += pts
             cumulative.append(current)
 
-        # 38戦分を None で埋める
         while len(cumulative) < TOTAL_MATCHES:
             cumulative.append(None)
 
         played_count = len(match_points)
         data["currentPoints"] = cumulative
         data["currentSeasonLabel"] = f"2026 - 27 シーズン ({played_count}試合消化時点)"
-        print(f"最新データを正常に反映しました: {played_count}試合消化時点（獲得勝ち点推移: {cumulative[:played_count]}）")
+        print(f"更新成功: {played_count}試合消化（勝ち点推移: {cumulative[:played_count]}）")
     else:
-        print("試合結果が取得できなかったため、既存データを維持します。")
+        print("有効な試合スコアが取得できなかったため、既存データを維持します。")
 
     now_str = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
     data["updated_at"] = now_str
@@ -111,7 +115,7 @@ def update_data():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("data.json を更新しました。")
+    print("data.json の更新処理が完了しました。")
 
 
 if __name__ == "__main__":
