@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 TOTAL_MATCHES = 38
 JST = timezone(timedelta(hours=9))
 
-# 複数クラブの設定一覧
+# 正しいチームIDと設定
 TEAMS = [
     {
         "name": "横浜F・マリノス",
@@ -18,7 +18,7 @@ TEAMS = [
     },
     {
         "name": "ガンバ大阪",
-        "team_id": "128",
+        "team_id": "130",  # ※128(川崎F)から正しい130(G大阪)へ修正
         "search_name": ["G大阪", "ガンバ"],
         "data_file": "data_gamba.json"
     }
@@ -56,19 +56,22 @@ def fetch_team_matches(team_id, search_names):
             for row in soup.find_all("tr"):
                 text = row.get_text()
 
+                # J1リーグ戦のみ
                 if not (("J1" in text or "明治安田" in text) and "節" in text):
                     continue
+                # カップ戦等の除外
                 if any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO"]):
                     continue
-                if any(w in text for w in ["vs", "試合前", "中止", "延期"]):
+                if any(w in text for w in ["vs", "試合前", "中止", "延期", "前半", "後半"]):
                     continue
 
-                score_match = re.search(r"(\b\d{1,2}\b)\s*[-–]\s*(\b\d{1,2}\b)", text)
-                if not score_match or ":" in text[max(0, score_match.start() - 3):score_match.end() + 3]:
+                # スコア判定（「試合終了」や「.」が入っても正確に得点を抽出）
+                score_match = re.search(r"(\d{1,2})\s*[-–]\s*(\d{1,2})", text)
+                if not score_match:
                     continue
 
-                s1 = int(score_match.group(1))
-                s2 = int(score_match.group(2))
+                s1 = int(score_match.group(1))  # 左側チームの得点
+                s2 = int(score_match.group(2))  # 右側チームの得点
 
                 sec_match = re.search(r"第?(\d+)\s*節", text)
                 section_str = f"第{sec_match.group(1)}節" if sec_match else f"{len(match_list) + 1}戦目"
@@ -85,16 +88,20 @@ def fetch_team_matches(team_id, search_names):
                 if is_home:
                     my_score, opp_score = s1, s2
                     ha_str = "H"
-                    opp_m = re.search(r"([^\s\d\(\)\[\]\:\-]+)", after_score)
+                    # スコアの後ろ側からノイズワードを除去して相手チーム名を抽出
+                    clean_after = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|BS|NHK|\.|\d+)", " ", after_score)
+                    opp_m = re.search(r"([^\s\d\(\)\[\]\:\-]+)", clean_after)
                     raw_opp = opp_m.group(1) if opp_m else "相手"
                 else:
                     my_score, opp_score = s2, s1
                     ha_str = "A"
-                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", before_score)
-                    valid_opps = [w for w in opp_candidates if "J1" not in w and "節" not in w and not any(n in w for n in search_names) and "明治安田" not in w]
+                    # スコアの前側から相手チーム名を抽出
+                    clean_before = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了)", " ", before_score)
+                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_before)
+                    valid_opps = [w for w in opp_candidates if not any(n in w for n in search_names) and "節" not in w]
                     raw_opp = valid_opps[-1] if valid_opps else "相手"
 
-                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2})", "", raw_opp).strip()
+                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場)", "", raw_opp).strip()
 
                 if my_score > opp_score:
                     pts, res_lbl = 3, "WIN"
@@ -134,7 +141,8 @@ def process_team(team_cfg):
     match_list = fetch_team_matches(team_cfg["team_id"], team_cfg["search_name"])
     current_played = len([p for p in data.get("currentPoints", []) if p is not None])
 
-    if match_list and len(match_list) >= current_played and len(match_list) <= current_played + 2:
+    # 1試合追加消化された場合に安全に更新
+    if match_list and len(match_list) >= current_played:
         cumulative = []
         cur = 0
         for m in match_list:
@@ -145,13 +153,12 @@ def process_team(team_cfg):
         while len(cumulative) < TOTAL_MATCHES:
             cumulative.append(None)
 
-        # 今季データのみ更新（過去データは完全温存）
         data["currentPoints"] = cumulative
         data["currentSeasonLabel"] = f"2026 - 27 シーズン ({len(match_list)}試合消化時点)"
         data["matches"] = match_list
-        print(f"[{team_cfg['name']}] 正常更新: {len(match_list)}試合消化（勝ち点: {cur}）")
+        print(f"[{team_cfg['name']}] 正常更新: {len(match_list)}試合消化（累計勝ち点: {cur}）")
     else:
-        print(f"[{team_cfg['name']}] 安全ガード: 既存データを維持しました。")
+        print(f"[{team_cfg['name']}] 試合結果なし、または既存データを維持")
 
     data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
 
