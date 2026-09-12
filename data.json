@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-12 22:12",
-  "currentSeasonLabel": "2026 - 27 シーズン (6試合消化時点)",
+  "updated_at": "2026-09-12 22:38",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -8,14 +8,14 @@
     6,
     7,
     10,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    11,
+    11,
+    14,
+    17,
+    17,
+    18,
+    21,
+    22,
     null,
     null,
     null,
@@ -259,6 +259,94 @@
       "result": "WIN",
       "pts": 3,
       "cumulative_pts": 10
+    },
+    {
+      "match_num": 7,
+      "section": "第7節",
+      "date": "9/12",
+      "opponent": "町田",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "cumulative_pts": 11
+    },
+    {
+      "match_num": 8,
+      "section": "第1節",
+      "date": "8/7",
+      "opponent": "鹿島",
+      "ha": "H",
+      "score": "3 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "cumulative_pts": 11
+    },
+    {
+      "match_num": 9,
+      "section": "第2節",
+      "date": "8/15",
+      "opponent": "清水",
+      "ha": "A",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "cumulative_pts": 14
+    },
+    {
+      "match_num": 10,
+      "section": "第3節",
+      "date": "8/22",
+      "opponent": "神戸",
+      "ha": "H",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "cumulative_pts": 17
+    },
+    {
+      "match_num": 11,
+      "section": "第4節",
+      "date": "8/29",
+      "opponent": "浦和",
+      "ha": "A",
+      "score": "2 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "cumulative_pts": 17
+    },
+    {
+      "match_num": 12,
+      "section": "第5節",
+      "date": "9/2",
+      "opponent": "京都",
+      "ha": "H",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "cumulative_pts": 18
+    },
+    {
+      "match_num": 13,
+      "section": "第6節",
+      "date": "9/6",
+      "opponent": "柏",
+      "ha": "A",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "cumulative_pts": 21
+    },
+    {
+      "match_num": 14,
+      "section": "第7節",
+      "date": "9/12",
+      "opponent": "町田",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "cumulative_pts": 22
     }
   ]
 }
