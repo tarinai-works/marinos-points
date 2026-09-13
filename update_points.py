@@ -17,11 +17,24 @@ TEAMS = [
     },
     {
         "name": "ガンバ大阪",
-        "team_id": "128",  # ※スポーツナビのガンバ大阪正規IDは 128
+        "team_id": "128",
         "keywords": ["G大阪", "ガンバ大阪", "ガンバ"],
         "data_file": "data_gamba.json"
     }
 ]
+
+def parse_match_date(date_str):
+    """
+    '8/7' や '2/14' などの日付文字列を秋春制（2026-27）の完全な datetime オブジェクトに変換する
+    """
+    m = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
+    if not m:
+        return datetime(2099, 1, 1)
+    month = int(m.group(1))
+    day = int(m.group(2))
+    # 7月〜12月は2026年、1月〜6月は2027年として扱う
+    year = 2026 if month >= 7 else 2027
+    return datetime(year, month, day)
 
 def fetch_team_matches(team_id, keywords):
     base_url = f"https://soccer.yahoo.co.jp/jleague/category/j1/teams/{team_id}/schedule"
@@ -42,7 +55,7 @@ def fetch_team_matches(team_id, keywords):
         if ym <= current_ym:
             candidate_months.append(str(ym))
 
-    # 節番号 (int) をキーにして重複を絶対に防ぐ辞書
+    # 節番号 (int) をキーにして重複を排除する辞書
     matches_dict = {}
 
     for month_str in candidate_months:
@@ -53,7 +66,6 @@ def fetch_team_matches(team_id, keywords):
                 continue
             soup = BeautifulSoup(res.text, "html.parser")
 
-            # 単一の行タグのみを対象にすることで多重抽出を防止
             rows = soup.find_all("tr")
             if not rows:
                 rows = soup.find_all("li")
@@ -61,24 +73,20 @@ def fetch_team_matches(team_id, keywords):
             for row in rows:
                 text = row.get_text(separator=" ", strip=True)
 
-                # J1リーグの節表記があるか
                 if not ("J1" in text and "節" in text):
                     continue
-                # カップ戦・未消化・試合前・試合中を徹底除外
                 if any(c in text for c in ["天皇杯", "ルヴァン", "ACL", "ACLE", "回戦", "PO", "vs", "対戦データ", "試合前", "中止", "延期", "前半", "後半", "速報中"]):
                     continue
 
-                # 節番号を取得
                 sec_m = re.search(r"第?(\d+)\s*節", text)
                 if not sec_m:
                     continue
                 sec_num = int(sec_m.group(1))
 
-                # すでに取得済みの節はスキップ
+                # すでに取得済みの節はスキップ（多重カウント防止）
                 if sec_num in matches_dict:
                     continue
 
-                # スコア判定（キックオフ時刻 19:00 等を除外）
                 score_match = re.search(r"(?<!:)(?<!\d)(\d{1,2})\s*[-–]\s*(\d{1,2})(?!\d)(?!:)", text)
                 if not score_match:
                     continue
@@ -119,8 +127,10 @@ def fetch_team_matches(team_id, keywords):
                     pts, res_lbl = 0, "LOSE"
 
                 matches_dict[sec_num] = {
+                    "sec_num": sec_num,
                     "section": f"第{sec_num}節",
                     "date": date_str,
+                    "dt": parse_match_date(date_str),
                     "opponent": opponent,
                     "ha": ha_str,
                     "score": f"{my_score} - {opp_score}",
@@ -130,12 +140,16 @@ def fetch_team_matches(team_id, keywords):
         except Exception as e:
             print(f"Error reading {team_id} ({month_str}): {e}")
 
-    sorted_secs = sorted(matches_dict.keys())
+    # ★ここを変更：節番号ではなく「実際の日程順（時系列）」でソート
+    sorted_matches = sorted(matches_dict.values(), key=lambda x: (x["dt"], x["sec_num"]))
+
     match_list = []
-    for idx, s in enumerate(sorted_secs):
-        item = matches_dict[s]
-        item["match_num"] = idx + 1
-        match_list.append(item)
+    for idx, item in enumerate(sorted_matches):
+        item_copy = dict(item)
+        item_copy["match_num"] = idx + 1
+        item_copy.pop("dt", None)       # JSON出力用に一時的なdatetimeを削除
+        item_copy.pop("sec_num", None)  # JSON出力用に一時的な数値を削除
+        match_list.append(item_copy)
 
     return match_list[:TOTAL_MATCHES]
 
