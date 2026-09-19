@@ -25,14 +25,14 @@ TEAMS = [
 
 def parse_match_date(date_str):
     """
-    '8/7' や '2/14' などの日付文字列を秋春制（2026-27）の完全な datetime オブジェクトに変換する
+    '8/7' や '2/14' などの日付文字列を秋春制（2026-27）の datetime オブジェクトに変換
     """
     m = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
     if not m:
         return datetime(2099, 1, 1)
     month = int(m.group(1))
     day = int(m.group(2))
-    # 7月〜12月は2026年、1月〜6月は2027年として扱う
+    # 7月〜12月は2026年、1月〜6月は2027年として判定
     year = 2026 if month >= 7 else 2027
     return datetime(year, month, day)
 
@@ -55,7 +55,6 @@ def fetch_team_matches(team_id, keywords):
         if ym <= current_ym:
             candidate_months.append(str(ym))
 
-    # 節番号 (int) をキーにして重複を排除する辞書
     matches_dict = {}
 
     for month_str in candidate_months:
@@ -83,7 +82,6 @@ def fetch_team_matches(team_id, keywords):
                     continue
                 sec_num = int(sec_m.group(1))
 
-                # すでに取得済みの節はスキップ（多重カウント防止）
                 if sec_num in matches_dict:
                     continue
 
@@ -140,19 +138,18 @@ def fetch_team_matches(team_id, keywords):
         except Exception as e:
             print(f"Error reading {team_id} ({month_str}): {e}")
 
-    # ★ここを変更：節番号ではなく「実際の日程順（時系列）」でソート
+    # 日程順（時系列）でソート
     sorted_matches = sorted(matches_dict.values(), key=lambda x: (x["dt"], x["sec_num"]))
 
     match_list = []
     for idx, item in enumerate(sorted_matches):
         item_copy = dict(item)
         item_copy["match_num"] = idx + 1
-        item_copy.pop("dt", None)       # JSON出力用に一時的なdatetimeを削除
-        item_copy.pop("sec_num", None)  # JSON出力用に一時的な数値を削除
+        item_copy.pop("dt", None)
+        item_copy.pop("sec_num", None)
         match_list.append(item_copy)
 
     return match_list[:TOTAL_MATCHES]
-
 
 def process_team(team_cfg):
     file_path = team_cfg["data_file"]
@@ -163,9 +160,12 @@ def process_team(team_cfg):
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    # 既存の試合数を保持して比較
+    prev_match_count = len(data.get("matches", []))
+
     match_list = fetch_team_matches(team_cfg["team_id"], team_cfg["keywords"])
 
-    print(f"[{team_cfg['name']}] 確定試合数: {len(match_list)}試合")
+    print(f"[{team_cfg['name']}] 確定試合数: {len(match_list)}試合 (前回: {prev_match_count}試合)")
 
     if len(match_list) > 0:
         cumulative = []
@@ -182,14 +182,18 @@ def process_team(team_cfg):
         data["currentSeasonLabel"] = f"2026 - 27 シーズン ({len(match_list)}試合消化時点)"
         data["matches"] = match_list
         print(f"[{team_cfg['name']}] 正常更新: 累計勝ち点 {cur}")
+
+        # 新しい試合結果が追加された場合のみ更新日時を書き換える
+        if len(match_list) > prev_match_count or "updated_at" not in data:
+            data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
+            print(f"[{team_cfg['name']}] 新しい試合が反映されたため、更新日時を更新しました")
+        else:
+            print(f"[{team_cfg['name']}] 試合数に変動がないため、更新日時は維持します")
     else:
         print(f"[{team_cfg['name']}] 取得結果が0件のため既存データを維持")
 
-    data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
-
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-
 
 if __name__ == "__main__":
     for t in TEAMS:
