@@ -3,12 +3,9 @@ name: Update Marinos Data
 on:
   workflow_dispatch: # 手動実行ボタン
   schedule:
-    # 毎週水曜・土曜・日曜に自動実行（JST換算）
-    # 水曜日: JST 22:00 (UTC 13:00)
-    - cron: '0 13 * * 3'
-    # 土曜日・日曜日: JST 18:00, 22:00 (UTC 09:00, 13:00)
-    - cron: '0 9,13 * * 0,6'
-
+    # 毎日 日本時間 18:15（UTC 9:15）と 22:15（UTC 13:15）
+    - cron: '15 9,13 * * *'
+    
 jobs:
   update-data:
     runs-on: ubuntu-latest
