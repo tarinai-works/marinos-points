@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-16 22:06",
-  "currentSeasonLabel": "2026 - 27 シーズン (7試合消化時点)",
+  "updated_at": "2026-09-20 22:25",
+  "currentSeasonLabel": "2026 - 27 シーズン (8試合消化時点)",
   "currentPoints": [
     3,
     4,
@@ -9,7 +9,7 @@
     6,
     6,
     6,
-    null,
+    6,
     null,
     null,
     null,
@@ -265,6 +265,17 @@
       "result": "LOSE",
       "pts": 0,
       "match_num": 7,
+      "cumulative_pts": 6
+    },
+    {
+      "section": "第8節",
+      "date": "9/20",
+      "opponent": "神戸",
+      "ha": "H",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "match_num": 8,
       "cumulative_pts": 6
     }
   ]
