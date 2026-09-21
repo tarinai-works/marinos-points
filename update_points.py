@@ -21,6 +21,12 @@ TEAMS = [
         "keywords": ["G大阪", "ガンバ大阪", "ガンバ"],
         "data_file": "data_gamba.json"
     }
+    {
+        "name": "鹿島アントラーズ",
+        "team_id": "120",
+        "keywords": ["鹿島", "鹿島アントラーズ"],
+        "data_file": "data_kashima.json"
+    }
 ]
 
 def parse_match_date(date_str):
