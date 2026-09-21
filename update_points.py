@@ -38,7 +38,6 @@ def parse_match_date(date_str):
         return datetime(2099, 1, 1)
     month = int(m.group(1))
     day = int(m.group(2))
-    # 7月〜12月は2026年、1月〜6月は2027年として判定
     year = 2026 if month >= 7 else 2027
     return datetime(year, month, day)
 
@@ -111,14 +110,14 @@ def fetch_team_matches(team_id, keywords):
                     ha_str = "H"
                     clean_opp = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|NHK|BS|\.|\d+)", " ", after_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "日産" not in w and "吹田" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w]
                     raw_opp = valid[0] if valid else "相手"
                 else:
                     my_score, opp_score = s2, s1
                     ha_str = "A"
                     clean_opp = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了|LIVE)", " ", before_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "MUFG" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w]
                     raw_opp = valid[-1] if valid else "相手"
 
                 opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場)", "", raw_opp).strip()
@@ -144,7 +143,7 @@ def fetch_team_matches(team_id, keywords):
         except Exception as e:
             print(f"Error reading {team_id} ({month_str}): {e}")
 
-    # 日程順（時系列）でソート
+    # 日程順でソート
     sorted_matches = sorted(matches_dict.values(), key=lambda x: (x["dt"], x["sec_num"]))
 
     match_list = []
@@ -166,7 +165,6 @@ def process_team(team_cfg):
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 既存の試合数を保持して比較
     prev_match_count = len(data.get("matches", []))
 
     match_list = fetch_team_matches(team_cfg["team_id"], team_cfg["keywords"])
@@ -189,7 +187,6 @@ def process_team(team_cfg):
         data["matches"] = match_list
         print(f"[{team_cfg['name']}] 正常更新: 累計勝ち点 {cur}")
 
-        # 新しい試合結果が追加された場合のみ更新日時を書き換える
         if len(match_list) > prev_match_count or "updated_at" not in data:
             data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
             print(f"[{team_cfg['name']}] 新しい試合が反映されたため、更新日時を更新しました")
