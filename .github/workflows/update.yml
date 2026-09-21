@@ -33,5 +33,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json data_gamba.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update points [skip ci]" && git push origin main)
+          # 全ての変更（data.json, data_gamba.json, data_kashima.json など）をステージングに追加
+          git add -A
+          # 差分がある場合のみコミットとプッシュを実行
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto update team data [skip ci]"
+            git push
+          else
+            echo "変更はありませんでした。"
+          fi
