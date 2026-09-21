@@ -20,7 +20,7 @@ TEAMS = [
         "team_id": "128",
         "keywords": ["G大阪", "ガンバ大阪", "ガンバ"],
         "data_file": "data_gamba.json"
-    }
+    },
     {
         "name": "鹿島アントラーズ",
         "team_id": "120",
