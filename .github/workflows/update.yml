@@ -2,6 +2,18 @@ name: Update Marinos Data
 
 on:
   workflow_dispatch: # 手動実行ボタン
+    inputs:
+      target_team:
+        description: '更新するチームを選択'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - marinos
+          - gamba
+          - kashima
+          - urawa
   schedule:
     # 毎日 日本時間 18:15（UTC 9:15）と 22:15（UTC 13:15）
     - cron: '15 9,13 * * *'
@@ -27,17 +39,20 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: スクリプト実行
-        run: python update_points.py
+        run: |
+          # 手動実行時は選択されたチーム、定期実行(cron)時は "all" を指定
+          TARGET="${{ github.event.inputs.target_team || 'all' }}"
+          echo "Target team: $TARGET"
+          python update_points.py --team "$TARGET"
 
       - name: 変更があればコミットしてプッシュ
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 全ての変更（data.json, data_gamba.json, data_kashima.json など）をステージングに追加
           git add -A
-          # 差分がある場合のみコミットとプッシュを実行
           if ! git diff --cached --quiet; then
-            git commit -m "Auto update team data [skip ci]"
+            TARGET="${{ github.event.inputs.target_team || 'all' }}"
+            git commit -m "Auto update team data [$TARGET] [skip ci]"
             git push
           else
             echo "変更はありませんでした。"
