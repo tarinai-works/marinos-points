@@ -75,7 +75,11 @@
     61,
     64,
     67,
-    70
+    70,
+    null,
+    null,
+    null,
+    null
   ],
   "season2022": [
     1,
@@ -111,7 +115,11 @@
     62,
     62,
     65,
-    68
+    68,
+    null,
+    null,
+    null,
+    null
   ],
   "minPace": [
     1,
