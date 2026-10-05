@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import sys
+import argparse
 from datetime import datetime, timezone, timedelta
 import requests
 from bs4 import BeautifulSoup
@@ -10,29 +12,36 @@ JST = timezone(timedelta(hours=9))
 
 TEAMS = [
     {
+        "id_key": "marinos",
         "name": "横浜F・マリノス",
         "team_id": "124",
         "keywords": ["横浜FM", "横浜F・マリノス", "横浜"],
         "data_file": "data.json"
     },
     {
+        "id_key": "gamba",
         "name": "ガンバ大阪",
         "team_id": "128",
         "keywords": ["G大阪", "ガンバ大阪", "ガンバ"],
         "data_file": "data_gamba.json"
     },
     {
+        "id_key": "kashima",
         "name": "鹿島アントラーズ",
         "team_id": "120",
         "keywords": ["鹿島", "鹿島アントラーズ"],
         "data_file": "data_kashima.json"
+    },
+    {
+        "id_key": "urawa",
+        "name": "浦和レッズ",
+        "team_id": "122",
+        "keywords": ["浦和", "浦和レッズ"],
+        "data_file": "data_urawa.json"
     }
 ]
 
 def parse_match_date(date_str):
-    """
-    '8/7' や '2/14' などの日付文字列を秋春制（2026-27）の datetime オブジェクトに変換
-    """
     m = re.search(r"(\d{1,2})/(\d{1,2})", date_str)
     if not m:
         return datetime(2099, 1, 1)
@@ -90,39 +99,7 @@ def fetch_team_matches(team_id, keywords):
                 if sec_num in matches_dict:
                     continue
 
-                score_match = re.search(r"(?<!:)(?<!\d)(\d{1,2})\s*[-–]\s*(\d{1,2})(?!\d)(?!:)", text)
-                if not score_match:
-                    continue
-
-                s1 = int(score_match.group(1))
-                s2 = int(score_match.group(2))
-
-                date_m = re.search(r"(\d{1,2}/\d{1,2})", text)
-                date_str = date_m.group(1) if date_m else ""
-
-                before_score = text[:score_match.start()]
-                after_score = text[score_match.end():]
-
-                is_home = any(kw in before_score for kw in keywords)
-
-                if is_home:
-                    my_score, opp_score = s1, s2
-                    ha_str = "H"
-                    clean_opp = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|NHK|BS|\.|\d+)", " ", after_score)
-                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w]
-                    raw_opp = valid[0] if valid else "相手"
-                else:
-                    my_score, opp_score = s2, s1
-                    ha_str = "A"
-                    clean_opp = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了|LIVE)", " ", before_score)
-                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w]
-                    raw_opp = valid[-1] if valid else "相手"
-
-                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場)", "", raw_opp).strip()
-
-                if my_score > opp_score:
+                score_match = re.search(r"(? opp_score:
                     pts, res_lbl = 3, "WIN"
                 elif my_score == opp_score:
                     pts, res_lbl = 1, "DRAW"
@@ -143,7 +120,6 @@ def fetch_team_matches(team_id, keywords):
         except Exception as e:
             print(f"Error reading {team_id} ({month_str}): {e}")
 
-    # 日程順でソート
     sorted_matches = sorted(matches_dict.values(), key=lambda x: (x["dt"], x["sec_num"]))
 
     match_list = []
@@ -199,5 +175,10 @@ def process_team(team_cfg):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Update football points data")
+    parser.add_argument("--team", default="all", choices=["all", "marinos", "gamba", "kashima", "urawa"], help="Target team to update")
+    args = parser.parse_args()
+
     for t in TEAMS:
-        process_team(t)
+        if args.team == "all" or args.team == t["id_key"]:
+            process_team(t)
