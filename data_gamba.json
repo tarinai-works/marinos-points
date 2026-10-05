@@ -75,7 +75,11 @@
     63,
     64,
     67,
-    70
+    70,
+    null,
+    null,
+    null,
+    null
   ],
   "season2014": [
     0,
@@ -111,7 +115,11 @@
     56,
     59,
     62,
-    63
+    63,
+    null,
+    null,
+    null,
+    null
   ],
   "season2023": [
     1,
@@ -147,7 +155,11 @@
     34,
     34,
     34,
-    34
+    34,
+    null,
+    null,
+    null,
+    null
   ],
   "avgPace": [
     0.6,
