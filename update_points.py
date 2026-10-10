@@ -99,7 +99,39 @@ def fetch_team_matches(team_id, keywords):
                 if sec_num in matches_dict:
                     continue
 
-                score_match = re.search(r"(? opp_score:
+                score_match = re.search(r"(?<!:)(?<!\d)(\d{1,2})\s*[-–]\s*(\d{1,2})(?!\d)(?!:)", text)
+                if not score_match:
+                    continue
+
+                s1 = int(score_match.group(1))
+                s2 = int(score_match.group(2))
+
+                date_m = re.search(r"(\d{1,2}/\d{1,2})", text)
+                date_str = date_m.group(1) if date_m else ""
+
+                before_score = text[:score_match.start()]
+                after_score = text[score_match.end():]
+
+                is_home = any(kw in before_score for kw in keywords)
+
+                if is_home:
+                    my_score, opp_score = s1, s2
+                    ha_str = "H"
+                    clean_opp = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|NHK|BS|\.|\d+)", " ", after_score)
+                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w and "埼玉" not in w]
+                    raw_opp = valid[0] if valid else "相手"
+                else:
+                    my_score, opp_score = s2, s1
+                    ha_str = "A"
+                    clean_opp = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了|LIVE)", " ", before_score)
+                    opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w]
+                    raw_opp = valid[-1] if valid else "相手"
+
+                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場)", "", raw_opp).strip()
+
+                if my_score > opp_score:
                     pts, res_lbl = 3, "WIN"
                 elif my_score == opp_score:
                     pts, res_lbl = 1, "DRAW"
