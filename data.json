@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-19 22:25",
-  "currentSeasonLabel": "2026 - 27 シーズン (8試合消化時点)",
+  "updated_at": "2026-10-10 17:33",
+  "currentSeasonLabel": "2026 - 27 シーズン (9試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -10,7 +10,7 @@
     10,
     11,
     14,
-    null,
+    15,
     null,
     null,
     null,
@@ -289,6 +289,17 @@
       "pts": 3,
       "match_num": 8,
       "cumulative_pts": 14
+    },
+    {
+      "section": "第9節",
+      "date": "10/10",
+      "opponent": "C大阪",
+      "ha": "A",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "match_num": 9,
+      "cumulative_pts": 15
     }
   ]
 }
