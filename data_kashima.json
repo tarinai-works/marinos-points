@@ -210,6 +210,14 @@
       "score": "4 - 3",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 11' 後 36' チャヴリッチ 後 54'(PK) 57'"
+        ],
+        "opponent": [
+          "三井寺 眞 前 7' 谷村 海那 前 18' 後 13'"
+        ]
+      },
       "match_num": 1,
       "cumulative_pts": 3
     },
@@ -221,6 +229,14 @@
       "score": "2 - 1",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 22' 関川 郁万 後 53'"
+        ],
+        "opponent": [
+          "原 輝綺 後 9'"
+        ]
+      },
       "match_num": 2,
       "cumulative_pts": 6
     },
@@ -232,6 +248,14 @@
       "score": "3 - 2",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "オウンゴール 前 31' レオ セアラ 後 15' チャヴリッチ 後 19'"
+        ],
+        "opponent": [
+          "師岡 柊生 前 43' オウンゴール 後 31'"
+        ]
+      },
       "match_num": 3,
       "cumulative_pts": 9
     },
@@ -243,6 +267,12 @@
       "score": "2 - 0",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 42' 後 5'"
+        ],
+        "opponent": []
+      },
       "match_num": 4,
       "cumulative_pts": 12
     },
@@ -254,6 +284,14 @@
       "score": "2 - 4",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 後 8' 38'"
+        ],
+        "opponent": [
+          "渡邉 新太 前 8'(PK) 21' 後 3' 10'"
+        ]
+      },
       "match_num": 5,
       "cumulative_pts": 12
     },
@@ -265,6 +303,12 @@
       "score": "0 - 1",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "オウンゴール 前 20'"
+        ]
+      },
       "match_num": 6,
       "cumulative_pts": 12
     },
@@ -276,6 +320,14 @@
       "score": "1 - 2",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "チャヴリッチ 後 28'"
+        ],
+        "opponent": [
+          "大迫 勇也 後 11'(PK) 山川 哲史 後 32'"
+        ]
+      },
       "match_num": 7,
       "cumulative_pts": 12
     },
@@ -287,6 +339,14 @@
       "score": "3 - 3",
       "result": "DRAW",
       "pts": 1,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 44' 後 22' 松村 優太 後 38'"
+        ],
+        "opponent": [
+          "マルシーニョ 前 48' 伊藤 達哉 後 9' ペドロ ホマーノ 後 52'"
+        ]
+      },
       "match_num": 8,
       "cumulative_pts": 13
     },
@@ -298,6 +358,12 @@
       "score": "2 - 0",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 52' 鈴木 優磨 後 15'"
+        ],
+        "opponent": []
+      },
       "match_num": 9,
       "cumulative_pts": 16
     }
