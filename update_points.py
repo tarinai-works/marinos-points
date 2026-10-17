@@ -42,12 +42,13 @@ TEAMS = [
     }
 ]
 
-# Jリーグ全主要スタジアム対応マッピング辞書
+# 最新ネーミングライツ対応スタジアム辞書
 STADIUM_MAP = {
     # 国立・首都圏
-    "MUFG国立": "国立競技場",
-    "MUFG": "国立競技場",
-    "国立": "国立競技場",
+    "MUFG国立": "MUFGスタジアム",
+    "MUFGスタジアム": "MUFGスタジアム",
+    "MUFG": "MUFGスタジアム",
+    "国立": "MUFGスタジアム",
     "日産ス": "日産スタジアム",
     "日産スタジアム": "日産スタジアム",
     "ニッパツ": "ニッパツ三ツ沢球技場",
@@ -69,8 +70,10 @@ STADIUM_MAP = {
     "平塚": "レモンガススタジアム平塚",
 
     # 関西
-    "ハナサカ": "ヨドコウ桜スタジアム",
-    "ヨドコウ": "ヨドコウ桜スタジアム",
+    "ハナサカ": "YANMAR HANASAKA STADIUM",
+    "HANASAKA": "YANMAR HANASAKA STADIUM",
+    "ヨドコウ": "YANMAR HANASAKA STADIUM",
+    "長居球技場": "YANMAR HANASAKA STADIUM",
     "ヤンマー": "ヤンマースタジアム長居",
     "長居": "ヤンマースタジアム長居",
     "パナスタ": "パナソニック スタジアム 吹田",
@@ -120,8 +123,10 @@ STADIUM_MAP = {
     "維新みらい": "維新みらいふスタジアム",
     "鳴門大塚": "鳴門・大塚スポーツパーク ポカリスエットスタジアム",
     "ポカリ": "鳴門・大塚スポーツパーク ポカリスエットスタジアム",
+    "メグスタ": "四国化成MEGLIOスタジアム",
     "Pikara": "Pikaraスタジアム",
     "ニンスタ": "ニンジニアスタジアム",
+    "ギケンス": "GIKENスタジアム",
 
     # 九州・沖縄
     "ベススタ": "ベスト電器スタジアム",
@@ -207,29 +212,25 @@ def fetch_match_scorers(detail_url, is_home):
     return scorers
 
 def extract_kickoff_and_stadium(row, full_text):
-    """
-    行構造(td)およびテキスト全体からキックオフ時間と正式スタジアム名を確実に抽出
-    """
     kickoff = ""
     stadium = ""
 
-    # 1. キックオフ時間の抽出
+    # キックオフ時間の抽出
     time_m = re.search(r"\b(\d{1,2}:\d{2})\b", full_text)
     if time_m:
         kickoff = time_m.group(1)
 
-    # 2. テーブルセル(td)からのスタジアム候補探索
+    # セルテキストの走査
     td_texts = []
     if hasattr(row, "find_all"):
         for td in row.find_all(["td", "span", "div"]):
             t = td.get_text(strip=True)
-            if t and len(t) <= 25:
+            if t and len(t) <= 30:
                 td_texts.append(t)
 
-    # 3. 辞書マッチング（文字数の長いスタジアム名から優先して最長一致判定）
     sorted_keys = sorted(STADIUM_MAP.keys(), key=lambda k: len(k), reverse=True)
     
-    # セル内からの完全一致/部分一致を最優先
+    # 1. セル単位での辞書最長一致マッチング
     for txt in td_texts:
         for k in sorted_keys:
             if k in txt:
@@ -238,16 +239,16 @@ def extract_kickoff_and_stadium(row, full_text):
         if stadium:
             break
 
-    # セルで見つからない場合は行テキスト全体から走査
+    # 2. 行全体テキストからの辞書マッチング
     if not stadium:
         for k in sorted_keys:
             if k in full_text:
                 stadium = STADIUM_MAP[k]
                 break
 
-    # それでも辞書にない場合のフォールバック（一般的なスタジアム名称パターン）
+    # 3. 辞書外スタジアムの正規表現フォールバック
     if not stadium:
-        fallback_m = re.search(r"([^\s\d\(\)\[\]\:\-]+(?:スタジアム|競技場|球技場|アリーナ|ドーム|アルウィン|パーク))", full_text)
+        fallback_m = re.search(r"([^\s\d\(\)\[\]\:\-]+(?:スタジアム|競技場|球技場|アリーナ|ドーム|アルウィン|パーク|STADIUM))", full_text)
         if fallback_m:
             stadium = fallback_m.group(1).strip()
 
@@ -309,7 +310,6 @@ def fetch_team_matches(team_id, keywords, existing_matches_dict):
                 date_m = re.search(r"(\d{1,2}/\d{1,2})", text)
                 date_str = date_m.group(1) if date_m else ""
 
-                # キックオフとスタジアムの抽出
                 kickoff_time, stadium_name = extract_kickoff_and_stadium(row, text)
 
                 before_score = text[:score_match.start()]
@@ -322,17 +322,17 @@ def fetch_team_matches(team_id, keywords, existing_matches_dict):
                     ha_str = "H"
                     clean_opp = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|NHK|BS|\.|\d+)", " ", after_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w and "埼玉" not in w and "国立" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w and "埼玉" not in w and "国立" not in w and "MUFG" not in w]
                     raw_opp = valid[0] if valid else "相手"
                 else:
                     my_score, opp_score = s2, s1
                     ha_str = "A"
                     clean_opp = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了|LIVE)", " ", before_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w and "ヨドコウ" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w and "ヨドコウ" not in w and "ハナサカ" not in w]
                     raw_opp = valid[-1] if valid else "相手"
 
-                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場)", "", raw_opp).strip()
+                opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場|STADIUM)", "", raw_opp).strip()
 
                 if my_score > opp_score:
                     pts, res_lbl = 3, "WIN"
@@ -353,7 +353,7 @@ def fetch_team_matches(team_id, keywords, existing_matches_dict):
                 else:
                     scorers_data = fetch_match_scorers(detail_link, is_home)
 
-                # 新しく取得できた stadium_name を最優先に採用（空文字だった過去データを上書き更新）
+                # 既存データが空文字の場合や未設定の場合は最新抽出値を優先
                 final_kickoff = kickoff_time or (exist_item.get("kickoff", "") if exist_item else "")
                 final_stadium = stadium_name or (exist_item.get("stadium", "") if exist_item else "")
 
@@ -424,11 +424,8 @@ def process_team(team_cfg):
         data["matches"] = match_list
         print(f"[{team_cfg['name']}] 正常更新: 累計勝ち点 {cur}")
 
-        if len(match_list) > prev_match_count or "updated_at" not in data:
-            data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
-            print(f"[{team_cfg['name']}] 新しい試合が反映されたため、更新日時を更新しました")
-        else:
-            print(f"[{team_cfg['name']}] 試合数に変動がないため、更新日時は維持します")
+        # スタジアム名が補完された場合もJSONを最新保存
+        data["updated_at"] = datetime.now(JST).strftime("%Y-%m-%d %H:%M")
     else:
         print(f"[{team_cfg['name']}] 取得結果が0件のため既存データを維持")
 
