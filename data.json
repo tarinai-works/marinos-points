@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-17 13:49",
-  "currentSeasonLabel": "2026 - 27 シーズン (9試合消化時点)",
+  "updated_at": "2026-10-17 16:48",
+  "currentSeasonLabel": "2026 - 27 シーズン (10試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -11,7 +11,7 @@
     11,
     14,
     15,
-    null,
+    16,
     null,
     null,
     null,
@@ -378,6 +378,23 @@
       },
       "match_num": 9,
       "cumulative_pts": 15
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "14:00",
+      "stadium": "フクダ電子アリーナ",
+      "opponent": "千葉",
+      "ha": "A",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
+      "match_num": 10,
+      "cumulative_pts": 16
     }
   ]
 }
