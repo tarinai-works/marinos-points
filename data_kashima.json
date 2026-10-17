@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-10 17:44",
+  "updated_at": "2026-10-17 16:55",
   "currentSeasonLabel": "2026 - 27 シーズン (9試合消化時点)",
   "currentPoints": [
     3,
@@ -205,6 +205,8 @@
     {
       "section": "第1節",
       "date": "8/7",
+      "kickoff": "19:25",
+      "stadium": "MUFGスタジアム",
       "opponent": "横浜FM",
       "ha": "A",
       "score": "4 - 3",
@@ -224,6 +226,8 @@
     {
       "section": "第2節",
       "date": "8/15",
+      "kickoff": "18:00",
+      "stadium": "",
       "opponent": "名古屋",
       "ha": "H",
       "score": "2 - 1",
@@ -243,6 +247,8 @@
     {
       "section": "第3節",
       "date": "8/22",
+      "kickoff": "18:00",
+      "stadium": "",
       "opponent": "福岡",
       "ha": "H",
       "score": "3 - 2",
@@ -262,6 +268,8 @@
     {
       "section": "第4節",
       "date": "8/29",
+      "kickoff": "19:00",
+      "stadium": "味の素スタジアム",
       "opponent": "東京V",
       "ha": "A",
       "score": "2 - 0",
@@ -279,6 +287,8 @@
     {
       "section": "第5節",
       "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "",
       "opponent": "水戸",
       "ha": "A",
       "score": "2 - 4",
@@ -298,6 +308,8 @@
     {
       "section": "第6節",
       "date": "9/6",
+      "kickoff": "18:00",
+      "stadium": "",
       "opponent": "浦和",
       "ha": "H",
       "score": "0 - 1",
@@ -315,6 +327,8 @@
     {
       "section": "第7節",
       "date": "9/11",
+      "kickoff": "19:00",
+      "stadium": "ノエビアスタジアム神戸",
       "opponent": "神戸",
       "ha": "A",
       "score": "1 - 2",
@@ -334,6 +348,8 @@
     {
       "section": "第8節",
       "date": "9/19",
+      "kickoff": "18:00",
+      "stadium": "Uvanceとどろきスタジアム by Fujitsu",
       "opponent": "川崎F",
       "ha": "A",
       "score": "3 - 3",
@@ -353,6 +369,8 @@
     {
       "section": "第9節",
       "date": "10/9",
+      "kickoff": "19:00",
+      "stadium": "",
       "opponent": "G大阪",
       "ha": "H",
       "score": "2 - 0",
