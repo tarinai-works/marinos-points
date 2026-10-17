@@ -42,6 +42,42 @@ TEAMS = [
     }
 ]
 
+# スタジアム略称から正式名称への変換辞書
+STADIUM_MAP = {
+    "日産ス": "日産スタジアム",
+    "日産スタジアム": "日産スタジアム",
+    "ニッパツ": "ニッパツ三ツ沢球技場",
+    "パナスタ": "パナソニック スタジアム 吹田",
+    "吹田S": "パナソニック スタジアム 吹田",
+    "カシマ": "県立カシマサッカースタジアム",
+    "カシマスタジアム": "県立カシマサッカースタジアム",
+    "埼玉": "埼玉スタジアム2002",
+    "埼スタ": "埼玉スタジアム2002",
+    "味スタ": "味の素スタジアム",
+    "味の素": "味の素スタジアム",
+    "ノエスタ": "ノエビアスタジアム神戸",
+    "ヨドコウ": "ヨドコウ桜スタジアム",
+    "ヤンマー": "ヤンマースタジアム長居",
+    "三協F柏": "三協フロンテア柏スタジアム",
+    "日立柏": "三協フロンテア柏スタジアム",
+    "Gスタ": "町田GIONスタジアム",
+    "町田": "町田GIONスタジアム",
+    "サンガS": "サンガスタジアム by KYOCERA",
+    "アイスタ": "IAIスタジアム日本平",
+    "日本平": "IAIスタジアム日本平",
+    "Ksスタ": "ケーズデンキスタジアム水戸",
+    "ケーズ": "ケーズデンキスタジアム水戸",
+    "トラスタ": "トランスコスモススタジアム長崎",
+    "ピースタ": "PEACE STADIUM Connected by SoftBank",
+    "フクアリ": "フクダ電子アリーナ",
+    "豊田ス": "豊田スタジアム",
+    "豊スタ": "豊田スタジアム",
+    "Eピース": "エディオンピースウイング広島",
+    "Eスタ": "エディオンピースウイング広島",
+    "U等々力": "Uvanceとどろきスタジアム by Fujitsu",
+    "等々力": "Uvanceとどろきスタジアム by Fujitsu"
+}
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
@@ -67,14 +103,13 @@ def fetch_match_scorers(detail_url, is_home):
         return scorers
 
     try:
-        time.sleep(0.5)  # サーバー負荷軽減のための短い待機
+        time.sleep(0.5)
         res = requests.get(detail_url, headers=HEADERS, timeout=10)
         if res.status_code != 200:
             return scorers
 
         soup = BeautifulSoup(res.text, "html.parser")
 
-        # Yahoo!のスコアボードにおける得点者セクションを探索
         home_scorers = []
         away_scorers = []
 
@@ -82,23 +117,20 @@ def fetch_match_scorers(detail_url, is_home):
         score_board = soup.find(class_=re.compile(r"(score|matchHeader|gameSummary)", re.I))
         if score_board:
             items = score_board.find_all(class_=re.compile(r"(scorer|point|goal)", re.I))
-            # 構造に応じてホーム/アウェイを抽出
             for item in items:
                 txt = item.get_text(separator=" ", strip=True)
                 if txt:
-                    # 簡易的な左右判定（クラス名または親要素）
                     if "home" in " ".join(item.get("class", [])).lower():
                         home_scorers.append(txt)
                     elif "away" in " ".join(item.get("class", [])).lower():
                         away_scorers.append(txt)
 
-        # パターン2: テキスト速報・イベント一覧（得点アイコンや'点'表記を抽出）
+        # パターン2: テキスト速報・イベント一覧
         if not home_scorers and not away_scorers:
             event_rows = soup.find_all(["li", "tr"], class_=re.compile(r"(event|timeline|detail)", re.I))
             for er in event_rows:
                 etxt = er.get_text(separator=" ", strip=True)
                 if "ゴール" in etxt or "得点" in etxt or "GOAL" in etxt:
-                    # 分数と選手名を抽出
                     time_m = re.search(r"(\d+分|\d+\+\d+分)", etxt)
                     t_str = time_m.group(1) if time_m else ""
                     clean_text = re.sub(r"(ゴール|得点|GOAL|!|！|\d+分|\d+\+\d+分)", "", etxt).strip()
@@ -120,6 +152,32 @@ def fetch_match_scorers(detail_url, is_home):
         print(f"得点者取得エラー ({detail_url}): {e}")
 
     return scorers
+
+def extract_kickoff_and_stadium(row, full_text):
+    """
+    行テキストやtd要素からキックオフ時間とスタジアム名を抽出
+    """
+    kickoff = ""
+    stadium = ""
+
+    # キックオフ時間の抽出 (例: 14:00, 19:03)
+    time_m = re.search(r"\b(\d{1,2}:\d{2})\b", full_text)
+    if time_m:
+        kickoff = time_m.group(1)
+
+    # スタジアムの抽出（td要素またはテキストからマッピング探索）
+    for raw_key, full_name in STADIUM_MAP.items():
+        if raw_key in full_text:
+            stadium = full_name
+            break
+
+    # マッピングにない場合は「〜スタジアム」「〜競技場」「〜球技場」を抽出
+    if not stadium:
+        std_m = re.search(r"([^\s\d\(\)\[\]]+(?:スタジアム|競技場|球技場|アリーナ))", full_text)
+        if std_m:
+            stadium = std_m.group(1).strip()
+
+    return kickoff, stadium
 
 def fetch_team_matches(team_id, keywords, existing_matches_dict):
     base_url = f"https://soccer.yahoo.co.jp/jleague/category/j1/teams/{team_id}/schedule"
@@ -177,6 +235,9 @@ def fetch_team_matches(team_id, keywords, existing_matches_dict):
                 date_m = re.search(r"(\d{1,2}/\d{1,2})", text)
                 date_str = date_m.group(1) if date_m else ""
 
+                # キックオフ時間とスタジアム名の抽出
+                kickoff_time, stadium_name = extract_kickoff_and_stadium(row, text)
+
                 before_score = text[:score_match.start()]
                 after_score = text[score_match.end():]
 
@@ -218,13 +279,18 @@ def fetch_team_matches(team_id, keywords, existing_matches_dict):
                 if exist_item and "scorers" in exist_item and (exist_item["scorers"]["my_team"] or exist_item["scorers"]["opponent"] or (my_score == 0 and opp_score == 0)):
                     scorers_data = exist_item["scorers"]
                 else:
-                    # 未取得または過去試合の場合は詳細URLから取得
                     scorers_data = fetch_match_scorers(detail_link, is_home)
+
+                # 既存データにキックオフ/スタジアムがあれば維持、なければ今回抽出したものをセット
+                final_kickoff = kickoff_time or (exist_item.get("kickoff", "") if exist_item else "")
+                final_stadium = stadium_name or (exist_item.get("stadium", "") if exist_item else "")
 
                 matches_dict[sec_num] = {
                     "sec_num": sec_num,
                     "section": f"第{sec_num}節",
                     "date": date_str,
+                    "kickoff": final_kickoff,
+                    "stadium": final_stadium,
                     "dt": parse_match_date(date_str),
                     "opponent": opponent,
                     "ha": ha_str,
@@ -257,7 +323,6 @@ def process_team(team_cfg):
     with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 既存の試合データを節番号をキーにした辞書にしておく
     existing_matches = data.get("matches", [])
     existing_matches_dict = {}
     for m in existing_matches:
