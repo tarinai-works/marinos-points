@@ -210,6 +210,14 @@
       "score": "4 - 3",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "イッサム ジェバリ 前 36' デニス ヒュメット 前 52' ウェルトン 後 39' 植中 朝日 後 41'"
+        ],
+        "opponent": [
+          "小森 飛絢 前 17' 金子 拓郎 後 33' 南野 遥海 後 35'"
+        ]
+      },
       "match_num": 1,
       "cumulative_pts": 3
     },
@@ -221,6 +229,14 @@
       "score": "1 - 1",
       "result": "DRAW",
       "pts": 1,
+      "scorers": {
+        "my_team": [
+          "中谷 進之介 後 29'"
+        ],
+        "opponent": [
+          "鳥海 芳樹 前 18'"
+        ]
+      },
       "match_num": 2,
       "cumulative_pts": 4
     },
@@ -232,6 +248,14 @@
       "score": "1 - 3",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "食野 亮太郎 前 11'"
+        ],
+        "opponent": [
+          "木村 勇大 前 7' 浅野 雄也 後 38' 小野 雅史 後 52'"
+        ]
+      },
       "match_num": 3,
       "cumulative_pts": 4
     },
@@ -243,6 +267,10 @@
       "score": "0 - 0",
       "result": "DRAW",
       "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
       "match_num": 4,
       "cumulative_pts": 5
     },
@@ -254,6 +282,14 @@
       "score": "2 - 2",
       "result": "DRAW",
       "pts": 1,
+      "scorers": {
+        "my_team": [
+          "デニス ヒュメット 後 45' イッサム ジェバリ 後 49'"
+        ],
+        "opponent": [
+          "保田 堅心 後 34' マテウス ジェズス 後 39'"
+        ]
+      },
       "match_num": 5,
       "cumulative_pts": 6
     },
@@ -265,6 +301,12 @@
       "score": "0 - 2",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "矢村 健 前 1' 津久井 匠海 後 7'"
+        ]
+      },
       "match_num": 6,
       "cumulative_pts": 6
     },
@@ -276,6 +318,12 @@
       "score": "0 - 2",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "安斎 颯馬 前 38' 長倉 幹樹 後 7'"
+        ]
+      },
       "match_num": 7,
       "cumulative_pts": 6
     },
@@ -287,6 +335,12 @@
       "score": "0 - 1",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "エリキ 後 45'"
+        ]
+      },
       "match_num": 8,
       "cumulative_pts": 6
     },
@@ -298,6 +352,12 @@
       "score": "0 - 2",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "レオ セアラ 前 52' 鈴木 優磨 後 15'"
+        ]
+      },
       "match_num": 9,
       "cumulative_pts": 6
     }
