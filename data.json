@@ -205,6 +205,8 @@
     {
       "section": "第1節",
       "date": "8/7",
+      "kickoff": "19:25",
+      "stadium": "",
       "opponent": "鹿島",
       "ha": "H",
       "score": "3 - 4",
@@ -224,6 +226,8 @@
     {
       "section": "第2節",
       "date": "8/15",
+      "kickoff": "18:30",
+      "stadium": "IAIスタジアム日本平",
       "opponent": "清水",
       "ha": "A",
       "score": "1 - 0",
@@ -241,6 +245,8 @@
     {
       "section": "第3節",
       "date": "8/22",
+      "kickoff": "19:30",
+      "stadium": "日産スタジアム",
       "opponent": "神戸",
       "ha": "H",
       "score": "1 - 0",
@@ -258,6 +264,8 @@
     {
       "section": "第4節",
       "date": "8/29",
+      "kickoff": "19:00",
+      "stadium": "埼玉スタジアム2002",
       "opponent": "浦和",
       "ha": "A",
       "score": "2 - 3",
@@ -277,6 +285,8 @@
     {
       "section": "第5節",
       "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "日産スタジアム",
       "opponent": "京都",
       "ha": "H",
       "score": "1 - 1",
@@ -296,6 +306,8 @@
     {
       "section": "第6節",
       "date": "9/6",
+      "kickoff": "19:00",
+      "stadium": "三協フロンテア柏スタジアム",
       "opponent": "柏",
       "ha": "A",
       "score": "2 - 0",
@@ -313,6 +325,8 @@
     {
       "section": "第7節",
       "date": "9/12",
+      "kickoff": "19:00",
+      "stadium": "町田GIONスタジアム",
       "opponent": "町田",
       "ha": "A",
       "score": "1 - 1",
@@ -332,6 +346,8 @@
     {
       "section": "第8節",
       "date": "9/19",
+      "kickoff": "19:30",
+      "stadium": "日産スタジアム",
       "opponent": "水戸",
       "ha": "H",
       "score": "2 - 0",
@@ -349,6 +365,8 @@
     {
       "section": "第9節",
       "date": "10/10",
+      "kickoff": "14:00",
+      "stadium": "",
       "opponent": "C大阪",
       "ha": "A",
       "score": "0 - 0",
