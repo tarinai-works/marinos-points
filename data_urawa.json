@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-23 12:30",
-  "currentSeasonLabel": "2026 - 27 シーズン (8試合消化時点)",
+  "updated_at": "2026-10-17 13:16",
+  "currentSeasonLabel": "2026 - 27 シーズン (9試合消化時点)",
   "currentPoints": [
     0,
     0,
@@ -10,7 +10,7 @@
     9,
     9,
     12,
-    null,
+    12,
     null,
     null,
     null,
@@ -210,6 +210,14 @@
       "score": "3 - 4",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "小森 飛絢 前 17' 金子 拓郎 後 33' 南野 遥海 後 35'"
+        ],
+        "opponent": [
+          "イッサム ジェバリ 前 36' デニス ヒュメット 前 52' ウェルトン 後 39' 植中 朝日 後 41'"
+        ]
+      },
       "match_num": 1,
       "cumulative_pts": 0
     },
@@ -221,6 +229,14 @@
       "score": "1 - 4",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "オウンゴール 前 22'"
+        ],
+        "opponent": [
+          "鈴木 章斗 前 16' 後 30' 塩谷 司 前 47' セバスティアン アレー 後 16'"
+        ]
+      },
       "match_num": 2,
       "cumulative_pts": 0
     },
@@ -232,6 +248,14 @@
       "score": "1 - 3",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "渡邊 凌磨 前 47'"
+        ],
+        "opponent": [
+          "中村 帆高 前 8' 西村 拓真 後 9' ネタ ラヴィ 後 16'"
+        ]
+      },
       "match_num": 3,
       "cumulative_pts": 0
     },
@@ -243,6 +267,14 @@
       "score": "3 - 2",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス サヴィオ 前 40' 根本 健太 後 19' 南野 遥海 後 26'"
+        ],
+        "opponent": [
+          "谷村 海那 前 38' 後 12'"
+        ]
+      },
       "match_num": 4,
       "cumulative_pts": 3
     },
@@ -254,6 +286,14 @@
       "score": "3 - 2",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス サヴィオ 前 7' 林 幸多郎 後 38' オナイウ 阿道 後 40'"
+        ],
+        "opponent": [
+          "碓井 聖生 前 24' 師岡 柊生 前 35'"
+        ]
+      },
       "match_num": 5,
       "cumulative_pts": 6
     },
@@ -265,6 +305,12 @@
       "score": "1 - 0",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "オウンゴール 前 20'"
+        ],
+        "opponent": []
+      },
       "match_num": 6,
       "cumulative_pts": 9
     },
@@ -276,6 +322,14 @@
       "score": "1 - 2",
       "result": "LOSE",
       "pts": 0,
+      "scorers": {
+        "my_team": [
+          "南野 遥海 前 27'"
+        ],
+        "opponent": [
+          "大森 博 前 18' 立田 悠悟 後 56'"
+        ]
+      },
       "match_num": 7,
       "cumulative_pts": 9
     },
@@ -287,7 +341,32 @@
       "score": "3 - 1",
       "result": "WIN",
       "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス サヴィオ 前 24' 32' 南野 遥海 前 44'"
+        ],
+        "opponent": [
+          "新井 悠太 後 17'"
+        ]
+      },
       "match_num": 8,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第9節",
+      "date": "10/10",
+      "opponent": "FC東京",
+      "ha": "A",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "長倉 幹樹 後 18' 安斎 颯馬 後 24' 佐藤 恵允 後 40'"
+        ]
+      },
+      "match_num": 9,
       "cumulative_pts": 12
     }
   ]
