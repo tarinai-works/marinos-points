@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-17 16:55",
-  "currentSeasonLabel": "2026 - 27 シーズン (9試合消化時点)",
+  "updated_at": "2026-10-22 21:47",
+  "currentSeasonLabel": "2026 - 27 シーズン (11試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -11,8 +11,8 @@
     12,
     13,
     16,
-    null,
-    null,
+    19,
+    20,
     null,
     null,
     null,
@@ -384,6 +384,46 @@
       },
       "match_num": 9,
       "cumulative_pts": 16
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "長崎",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 前 2'(PK) チャヴリッチ 前 5'"
+        ],
+        "opponent": []
+      },
+      "match_num": 10,
+      "cumulative_pts": 19
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "京都",
+      "ha": "A",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "エウベル 後 33' 松村 優太 後 50'"
+        ],
+        "opponent": [
+          "新井 晴樹 前 16' 後 52'"
+        ]
+      },
+      "match_num": 11,
+      "cumulative_pts": 20
     }
   ]
 }

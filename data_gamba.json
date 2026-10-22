@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-17 16:45",
-  "currentSeasonLabel": "2026 - 27 シーズン (10試合消化時点)",
+  "updated_at": "2026-10-22 21:47",
+  "currentSeasonLabel": "2026 - 27 シーズン (11試合消化時点)",
   "currentPoints": [
     3,
     4,
@@ -12,7 +12,7 @@
     6,
     6,
     7,
-    null,
+    10,
     null,
     null,
     null,
@@ -399,6 +399,27 @@
       },
       "match_num": 10,
       "cumulative_pts": 7
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "ウェルトン 後 5' 宇佐美 貴史 後 33'"
+        ],
+        "opponent": [
+          "橋本 悠 後 30'"
+        ]
+      },
+      "match_num": 11,
+      "cumulative_pts": 10
     }
   ]
 }
