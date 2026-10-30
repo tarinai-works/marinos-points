@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-22 21:47",
-  "currentSeasonLabel": "2026 - 27 シーズン (11試合消化時点)",
+  "updated_at": "2026-10-30 10:30",
+  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -13,7 +13,7 @@
     16,
     19,
     20,
-    null,
+    20,
     null,
     null,
     null,
@@ -423,6 +423,27 @@
         ]
       },
       "match_num": 11,
+      "cumulative_pts": 20
+    },
+    {
+      "section": "第12節",
+      "date": "10/24",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "柏",
+      "ha": "H",
+      "score": "2 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "徳田 誉 前 14' チャヴリッチ 後 43'"
+        ],
+        "opponent": [
+          "遠藤 渓太 前 35' 山内 日向汰 前 46' 後 14'"
+        ]
+      },
+      "match_num": 12,
       "cumulative_pts": 20
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-22 21:47",
-  "currentSeasonLabel": "2026 - 27 シーズン (11試合消化時点)",
+  "updated_at": "2026-10-30 10:30",
+  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
   "currentPoints": [
     3,
     4,
@@ -13,7 +13,7 @@
     6,
     7,
     10,
-    null,
+    11,
     null,
     null,
     null,
@@ -420,6 +420,27 @@
       },
       "match_num": 11,
       "cumulative_pts": 10
+    },
+    {
+      "section": "第12節",
+      "date": "10/24",
+      "kickoff": "16:00",
+      "stadium": "パナソニック スタジアム 吹田",
+      "opponent": "京都",
+      "ha": "H",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "宇佐美 貴史 前 31' イッサム ジェバリ 後 20'"
+        ],
+        "opponent": [
+          "新井 晴樹 前 39' 加藤 拓己 後 47'"
+        ]
+      },
+      "match_num": 12,
+      "cumulative_pts": 11
     }
   ]
 }

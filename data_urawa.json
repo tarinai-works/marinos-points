@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-22 21:47",
-  "currentSeasonLabel": "2026 - 27 シーズン (11試合消化時点)",
+  "updated_at": "2026-10-30 10:31",
+  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
   "currentPoints": [
     0,
     0,
@@ -13,7 +13,7 @@
     12,
     15,
     18,
-    null,
+    21,
     null,
     null,
     null,
@@ -426,6 +426,25 @@
       },
       "match_num": 11,
       "cumulative_pts": 18
+    },
+    {
+      "section": "第12節",
+      "date": "10/25",
+      "kickoff": "15:00",
+      "stadium": "埼玉スタジアム2002",
+      "opponent": "長崎",
+      "ha": "H",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス サヴィオ 後 26'"
+        ],
+        "opponent": []
+      },
+      "match_num": 12,
+      "cumulative_pts": 21
     }
   ]
 }
