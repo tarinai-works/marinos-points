@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-30 10:30",
-  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
+  "updated_at": "2026-11-02 00:12",
+  "currentSeasonLabel": "2026 - 27 シーズン (13試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -14,7 +14,7 @@
     16,
     17,
     18,
-    null,
+    21,
     null,
     null,
     null,
@@ -437,6 +437,27 @@
       },
       "match_num": 12,
       "cumulative_pts": 18
+    },
+    {
+      "section": "第13節",
+      "date": "11/1",
+      "kickoff": "13:00",
+      "stadium": "日産スタジアム",
+      "opponent": "川崎F",
+      "ha": "H",
+      "score": "4 - 2",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "遠野 大弥 前 12' 近藤 友喜 前 28' 谷村 海那 前 41' ジェイソン キニョーネス 後 11'"
+        ],
+        "opponent": [
+          "フィリップ ウレモヴィッチ 前 33' 大関 友翔 後 48'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 21
     }
   ]
 }

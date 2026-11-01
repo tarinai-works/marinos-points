@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-30 10:31",
-  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
+  "updated_at": "2026-11-02 00:12",
+  "currentSeasonLabel": "2026 - 27 シーズン (13試合消化時点)",
   "currentPoints": [
     0,
     0,
@@ -14,7 +14,7 @@
     15,
     18,
     21,
-    null,
+    21,
     null,
     null,
     null,
@@ -444,6 +444,25 @@
         "opponent": []
       },
       "match_num": 12,
+      "cumulative_pts": 21
+    },
+    {
+      "section": "第13節",
+      "date": "10/31",
+      "kickoff": "16:00",
+      "stadium": "三協フロンテア柏スタジアム",
+      "opponent": "柏",
+      "ha": "A",
+      "score": "0 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "小泉 佳穂 前 37' 弓場 堅真 後 23' 久保 藤次郎 後 45' 原田 亘 後 47'"
+        ]
+      },
+      "match_num": 13,
       "cumulative_pts": 21
     }
   ]

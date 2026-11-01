@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-30 10:30",
-  "currentSeasonLabel": "2026 - 27 シーズン (12試合消化時点)",
+  "updated_at": "2026-11-02 00:12",
+  "currentSeasonLabel": "2026 - 27 シーズン (13試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -14,7 +14,7 @@
     19,
     20,
     20,
-    null,
+    23,
     null,
     null,
     null,
@@ -445,6 +445,27 @@
       },
       "match_num": 12,
       "cumulative_pts": 20
+    },
+    {
+      "section": "第13節",
+      "date": "10/31",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "C大阪",
+      "ha": "H",
+      "score": "4 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "エウベル 前 14' 22' マテウス ブエノ 前 36' チャヴリッチ 後 25'"
+        ],
+        "opponent": [
+          "パブロ サバック 前 25'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 23
     }
   ]
 }
