@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-02 00:12",
-  "currentSeasonLabel": "2026 - 27 シーズン (13試合消化時点)",
+  "updated_at": "2026-11-07 17:13",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -15,7 +15,7 @@
     20,
     20,
     23,
-    null,
+    23,
     null,
     null,
     null,
@@ -465,6 +465,25 @@
         ]
       },
       "match_num": 13,
+      "cumulative_pts": 23
+    },
+    {
+      "section": "第14節",
+      "date": "11/7",
+      "kickoff": "15:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "FC東京",
+      "ha": "A",
+      "score": "0 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "長倉 幹樹 後 15' ダニ ゴメス 後 50'"
+        ]
+      },
+      "match_num": 14,
       "cumulative_pts": 23
     }
   ]
