@@ -1,19 +1,35 @@
 name: Update Football Points Data
 
 on:
-  workflow_dispatch: # 手動実行のみ
+  workflow_dispatch:
     inputs:
       target_team:
-        description: '更新する対象を選択（基本は各チーム、必要な時だけall）'
+        description: '更新する対象を選択（基本は all、個別更新時はチーム名）'
         required: true
-        default: 'marinos'
+        default: 'all'
         type: choice
         options:
-          - marinos   # 横浜F・マリノス
-          - gamba     # ガンバ大阪
-          - kashima   # 鹿島アントラーズ
-          - urawa     # 浦和レッズ
-          - all       # 全チーム一括手動更新
+          - all
+          - marinos
+          - gamba
+          - kashima
+          - urawa
+          - kawasaki
+          - kobe
+          - sanfrecce
+          - fctokyo
+          - verdy
+          - machida
+          - cerezo
+          - nagoya
+          - kashiwa
+          - kyoto
+          - fukuoka
+          - shimizu
+          - nagasaki
+          - okayama
+          - chiba
+          - mito
 
 jobs:
   update-data:
