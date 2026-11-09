@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09 09:33",
+  "updated_at": "2026-11-09 09:57",
   "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
   "currentPoints": [
     3,
@@ -227,7 +227,7 @@
       "section": "第2節",
       "date": "8/15",
       "kickoff": "18:00",
-      "stadium": "",
+      "stadium": "水戸信用金庫スタジアム",
       "opponent": "水戸",
       "ha": "A",
       "score": "1 - 1",
@@ -364,7 +364,7 @@
       "section": "第9節",
       "date": "10/9",
       "kickoff": "19:00",
-      "stadium": "",
+      "stadium": "メルカリスタジアム",
       "opponent": "鹿島",
       "ha": "A",
       "score": "0 - 2",
