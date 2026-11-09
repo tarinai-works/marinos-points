@@ -34,7 +34,7 @@ TEAMS = [
         "team_id": "120",
         "keywords": ["鹿島", "鹿島アントラーズ"],
         "data_file": "data_kashima.json",
-        "default_stadium": "県立カシマサッカースタジアム"
+        "default_stadium": "メルカリスタジアム"
     },
     {
         "id_key": "urawa",
@@ -43,6 +43,134 @@ TEAMS = [
         "keywords": ["浦和", "浦和レッズ"],
         "data_file": "data_urawa.json",
         "default_stadium": "埼玉スタジアム2002"
+    },
+    {
+        "id_key": "kawasaki",
+        "name": "川崎フロンターレ",
+        "team_id": "130",
+        "keywords": ["川崎F", "川崎フロンターレ", "川崎"],
+        "data_file": "data_kawasaki.json",
+        "default_stadium": "Uvanceとどろきスタジアム by Fujitsu"
+    },
+    {
+        "id_key": "kobe",
+        "name": "ヴィッセル神戸",
+        "team_id": "134",
+        "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
+        "data_file": "data_kobe.json",
+        "default_stadium": "ノエビアスタジアム神戸"
+    },
+    {
+        "id_key": "sanfrecce",
+        "name": "サンフレッチェ広島",
+        "team_id": "132",
+        "keywords": ["広島", "サンフレッチェ広島", "サンフレッチェ"],
+        "data_file": "data_sanfrecce.json",
+        "default_stadium": "エディオンピースウイング広島"
+    },
+    {
+        "id_key": "fctokyo",
+        "name": "FC東京",
+        "team_id": "123",
+        "keywords": ["FC東京", "F東京"],
+        "data_file": "data_fctokyo.json",
+        "default_stadium": "味の素スタジアム"
+    },
+    {
+        "id_key": "verdy",
+        "name": "東京ヴェルディ",
+        "team_id": "121",
+        "keywords": ["東京V", "東京ヴェルディ", "ヴェルディ"],
+        "data_file": "data_verdy.json",
+        "default_stadium": "味の素スタジアム"
+    },
+    {
+        "id_key": "machida",
+        "name": "FC町田ゼルビア",
+        "team_id": "10012",
+        "keywords": ["町田", "FC町田ゼルビア", "ゼルビア"],
+        "data_file": "data_machida.json",
+        "default_stadium": "町田GIONスタジアム"
+    },
+    {
+        "id_key": "cerezo",
+        "name": "セレッソ大阪",
+        "team_id": "129",
+        "keywords": ["C大阪", "セレッソ大阪", "セレッソ"],
+        "data_file": "data_cerezo.json",
+        "default_stadium": "YANMAR HANASAKA STADIUM"
+    },
+    {
+        "id_key": "nagoya",
+        "name": "名古屋グランパス",
+        "team_id": "127",
+        "keywords": ["名古屋", "名古屋グランパス", "グランパス"],
+        "data_file": "data_nagoya.json",
+        "default_stadium": "豊田スタジアム"
+    },
+    {
+        "id_key": "kashiwa",
+        "name": "柏レイソル",
+        "team_id": "125",
+        "keywords": ["柏", "柏レイソル", "レイソル"],
+        "data_file": "data_kashiwa.json",
+        "default_stadium": "三協フロンテア柏スタジアム"
+    },
+    {
+        "id_key": "kyoto",
+        "name": "京都サンガF.C.",
+        "team_id": "131",
+        "keywords": ["京都", "京都サンガF.C.", "京都サンガ", "サンガ"],
+        "data_file": "data_kyoto.json",
+        "default_stadium": "サンガスタジアム by KYOCERA"
+    },
+    {
+        "id_key": "fukuoka",
+        "name": "アビスパ福岡",
+        "team_id": "133",
+        "keywords": ["福岡", "アビスパ福岡", "アビスパ"],
+        "data_file": "data_fukuoka.json",
+        "default_stadium": "ベスト電器スタジアム"
+    },
+    {
+        "id_key": "shimizu",
+        "name": "清水エスパルス",
+        "team_id": "136",
+        "keywords": ["清水", "清水エスパルス", "エスパルス"],
+        "data_file": "data_shimizu.json",
+        "default_stadium": "IAIスタジアム日本平"
+    },
+    {
+        "id_key": "nagasaki",
+        "name": "V・ファーレン長崎",
+        "team_id": "10023",
+        "keywords": ["長崎", "V・ファーレン長崎", "Vファーレン"],
+        "data_file": "data_nagasaki.json",
+        "default_stadium": "PEACE STADIUM Connected by SoftBank"
+    },
+    {
+        "id_key": "okayama",
+        "name": "ファジアーノ岡山",
+        "team_id": "10015",
+        "keywords": ["岡山", "ファジアーノ岡山", "ファジアーノ"],
+        "data_file": "data_okayama.json",
+        "default_stadium": "シティライトスタジアム"
+    },
+    {
+        "id_key": "chiba",
+        "name": "ジェフユナイテッド千葉",
+        "team_id": "119",
+        "keywords": ["千葉", "ジェフユナイテッド千葉", "ジェフ千葉", "ジェフ"],
+        "data_file": "data_chiba.json",
+        "default_stadium": "フクダ電子アリーナ"
+    },
+    {
+        "id_key": "mito",
+        "name": "水戸ホーリーホック",
+        "team_id": "276",
+        "keywords": ["水戸", "水戸ホーリーホック", "ホーリーホック"],
+        "data_file": "data_mito.json",
+        "default_stadium": "水戸信用金庫スタジアム"
     }
 ]
 
