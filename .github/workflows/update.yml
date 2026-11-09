@@ -52,6 +52,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: スクリプト実行
+        env:
+          PYTHONUNBUFFERED: "1"
         run: |
           TARGET="${{ github.event.inputs.target_team }}"
           echo "Selected Target: $TARGET"
