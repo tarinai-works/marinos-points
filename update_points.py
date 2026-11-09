@@ -47,7 +47,7 @@ TEAMS = [
     {
         "id_key": "kawasaki",
         "name": "川崎フロンターレ",
-        "team_id": "130",
+        "team_id": "296",
         "keywords": ["川崎F", "川崎フロンターレ", "川崎"],
         "data_file": "data_kawasaki.json",
         "default_stadium": "Uvanceとどろきスタジアム by Fujitsu"
@@ -55,7 +55,7 @@ TEAMS = [
     {
         "id_key": "kobe",
         "name": "ヴィッセル神戸",
-        "team_id": "134",
+        "team_id": "135",
         "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
         "data_file": "data_kobe.json",
         "default_stadium": "ノエビアスタジアム神戸"
@@ -71,7 +71,7 @@ TEAMS = [
     {
         "id_key": "fctokyo",
         "name": "FC東京",
-        "team_id": "123",
+        "team_id": "270",
         "keywords": ["FC東京", "F東京"],
         "data_file": "data_fctokyo.json",
         "default_stadium": "味の素スタジアム"
@@ -135,7 +135,7 @@ TEAMS = [
     {
         "id_key": "shimizu",
         "name": "清水エスパルス",
-        "team_id": "136",
+        "team_id": "126",
         "keywords": ["清水", "清水エスパルス", "エスパルス"],
         "data_file": "data_shimizu.json",
         "default_stadium": "IAIスタジアム日本平"
