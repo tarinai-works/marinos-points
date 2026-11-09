@@ -11,7 +11,6 @@ from bs4 import BeautifulSoup
 TOTAL_MATCHES = 38
 JST = timezone(timedelta(hours=9))
 
-# J1全チームのマスター定義（今後チームを増やす際はここに追加するだけ）
 TEAMS = [
     {
         "id_key": "marinos",
@@ -37,13 +36,6 @@ TEAMS = [
         "keywords": ["浦和", "浦和レッズ"],
         "data_file": "data_urawa.json"
     }
-    # 他チーム追加例:
-    # {
-    #     "id_key": "kawasaki",
-    #     "name": "川崎フロンターレ",
-    #     "keywords": ["川崎F", "川崎フロンターレ", "川崎"],
-    #     "data_file": "data_kawasaki.json"
-    # }
 ]
 
 STADIUM_MAP = {
@@ -60,7 +52,8 @@ STADIUM_MAP = {
     "日本平": "IAIスタジアム日本平", "ヤマハ": "ヤマハスタジアム", "豊田ス": "豊田スタジアム", "豊スタ": "豊田スタジアム",
     "デンカS": "デンカビッグスワンスタジアム", "カシマ": "県立カシマサッカースタジアム", "大和ハウス": "大和ハウス プレミストドーム",
     "ユアスタ": "ユアテックスタジアム仙台", "Eピース": "エディオンピースウイング広島", "ピースタ": "PEACE STADIUM Connected by SoftBank",
-    "ベススタ": "ベスト電器スタジアム", "駅スタ": "駅前不動産スタジアム"
+    "ベススタ": "ベスト電器スタジアム", "駅スタ": "駅前不動産スタジアム", "Ksスタ": "ケーズデンキスタジアム水戸",
+    "ケーズ": "ケーズデンキスタジアム水戸"
 }
 
 HEADERS = {
@@ -84,10 +77,9 @@ def normalize_stadium(raw_text):
         if k in raw_text:
             return STADIUM_MAP[k]
     m = re.search(r"([^\s\d\(\)\[\]\:\-]+(?:スタジアム|競技場|球技場|アリーナ|ドーム|アルウィン|パーク|STADIUM))", raw_text)
-    return m.group(1).strip() if m else raw_text.strip()
+    return m.group(1).strip() if m else ""
 
 def fetch_match_scorers(detail_url):
-    """1つの試合詳細ページからホーム・アウェイ双方の得点者を一度に取得"""
     scorers = {"home": [], "away": []}
     if not detail_url:
         return scorers
@@ -129,17 +121,9 @@ def fetch_match_scorers(detail_url):
 
     return scorers
 
-def find_team_config(team_name):
-    for t in TEAMS:
-        if any(kw in team_name for kw in t["keywords"]):
-            return t
-    return None
-
 def fetch_all_matches_from_schedule():
-    """J1の節一覧ページ（第1節〜第38節）を巡回し、終了した試合を全チーム分まとめて抽出"""
     all_team_matches = {t["id_key"]: {} for t in TEAMS}
     
-    # 既存データのキャッシュをロード（詳細ページの無駄アクセス防止）
     cached_scorers = {}
     for t in TEAMS:
         if os.path.exists(t["data_file"]):
@@ -154,7 +138,6 @@ def fetch_all_matches_from_schedule():
 
     print("J1 日程・結果一覧の走査を開始します...")
 
-    # 第1節〜第38節をチェック（未来の試合ばかりになったら早期終了）
     consecutive_future_sections = 0
 
     for sec in range(1, TOTAL_MATCHES + 1):
@@ -183,14 +166,12 @@ def fetch_all_matches_from_schedule():
                 away_score = int(score_match.group(2))
                 section_has_finished = True
 
-                # 日付・時間・スタジアム
                 date_m = re.search(r"(\d{1,2}/\d{1,2})", text)
                 date_str = date_m.group(1) if date_m else ""
 
                 time_m = re.search(r"\b(\d{1,2}:\d{2})\b", text)
                 kickoff = time_m.group(1) if time_m else ""
 
-                # チーム名抽出
                 before_score = text[:score_match.start()]
                 after_score = text[score_match.end():]
 
@@ -202,28 +183,26 @@ def fetch_all_matches_from_schedule():
                     if any(kw in after_score for kw in t["keywords"]):
                         away_team_cfg = t
 
-                # 対象外チーム同士の対戦ならスキップ
                 if not home_team_cfg and not away_team_cfg:
                     continue
 
-                # スタジアム名（一覧ページには末尾や特定セルに記載がある）
+                # スタジアム名判定
                 stadium = ""
                 for td in row.find_all(["td", "span", "div"]):
                     t_str = td.get_text(strip=True)
-                    if any(k in t_str for k in STADIUM_MAP.keys()):
-                        stadium = normalize_stadium(t_str)
+                    s_norm = normalize_stadium(t_str)
+                    if s_norm:
+                        stadium = s_norm
                         break
                 if not stadium:
                     stadium = normalize_stadium(text)
 
-                # 詳細リンク（得点者用）
                 link_tag = row.find("a", href=re.compile(r"(/jleague/category/j1/|/game/)"))
                 detail_url = ""
                 if link_tag and link_tag.get("href"):
                     href = link_tag.get("href")
                     detail_url = href if href.startswith("http") else f"https://soccer.yahoo.co.jp{href}"
 
-                # 得点者キャッシュチェック
                 need_fetch = True
                 home_scorers_data = None
                 away_scorers_data = None
@@ -246,7 +225,6 @@ def fetch_all_matches_from_schedule():
                     home_scorers_data = {"my_team": sc["home"], "opponent": sc["away"]}
                     away_scorers_data = {"my_team": sc["away"], "opponent": sc["home"]}
 
-                # ホームチーム側のデータを記録
                 if home_team_cfg:
                     pts = 3 if home_score > away_score else (1 if home_score == away_score else 0)
                     res_lbl = "WIN" if pts == 3 else ("DRAW" if pts == 1 else "LOSE")
@@ -266,7 +244,6 @@ def fetch_all_matches_from_schedule():
                         "scorers": home_scorers_data
                     }
 
-                # アウェイチーム側のデータを記録
                 if away_team_cfg:
                     pts = 3 if away_score > home_score else (1 if away_score == home_score else 0)
                     res_lbl = "WIN" if pts == 3 else ("DRAW" if pts == 1 else "LOSE")
@@ -291,7 +268,6 @@ def fetch_all_matches_from_schedule():
             else:
                 consecutive_future_sections += 1
                 if consecutive_future_sections >= 3:
-                    # 終了試合のない節が3連続したらそれ以降の節は未消化とみなして中断（高速化）
                     break
 
             time.sleep(0.3)
@@ -303,7 +279,6 @@ def fetch_all_matches_from_schedule():
 def save_team_data(team_cfg, matches_dict):
     file_path = team_cfg["data_file"]
     
-    # ファイルがなければ新規作成
     if os.path.exists(file_path):
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -346,7 +321,12 @@ def save_team_data(team_cfg, matches_dict):
         print(f"[{team_cfg['name']}] 試合結果なし")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Update football points data")
+    parser.add_argument("--team", default="all", help="Target team to update (all, marinos, gamba, etc.)")
+    args = parser.parse_args()
+
     all_matches = fetch_all_matches_from_schedule()
     for t in TEAMS:
-        if t["id_key"] in all_matches:
-            save_team_data(t, all_matches[t["id_key"]])
+        if args.team == "all" or args.team == t["id_key"]:
+            if t["id_key"] in all_matches:
+                save_team_data(t, all_matches[t["id_key"]])
