@@ -187,10 +187,11 @@ STADIUM_MAP = {
     "ノエスタ": "ノエビアスタジアム神戸", "サンガS": "サンガスタジアム by KYOCERA", "アイスタ": "IAIスタジアム日本平",
     "日本平": "IAIスタジアム日本平", "ヤマハ": "ヤマハスタジアム", "エコパ": "エコパスタジアム",
     "豊田ス": "豊田スタジアム", "豊スタ": "豊田スタジアム", "デンカS": "デンカビッグスワンスタジアム",
-    "カシマ": "県立カシマサッカースタジアム", "Ksスタ": "ケーズデンキスタジアム水戸", "ケーズ": "ケーズデンキスタジアム水戸",
+    "メルカリ": "メルカリスタジアム", "カシマ": "メルカリスタジアム",
+    "水戸信金": "水戸信用金庫スタジアム", "水戸信用金庫": "水戸信用金庫スタジアム", "Ksスタ": "水戸信用金庫スタジアム", "ケーズ": "水戸信用金庫スタジアム",
     "大和ハウス": "大和ハウス プレミストドーム", "札幌ド": "大和ハウス プレミストドーム", "ユアスタ": "ユアテックスタジアム仙台",
     "Eピース": "エディオンピースウイング広島", "ピースタ": "PEACE STADIUM Connected by SoftBank",
-    "ベススタ": "ベスト電器スタジアム", "駅スタ": "駅前不動産スタジアム", "水戸信ス": "水戸信用金庫スタジアム", "メルスタ": "メルカリスタジアム"
+    "ベススタ": "ベスト電器スタジアム", "駅スタ": "駅前不動産スタジアム", "Cスタ": "シティライトスタジアム"
 }
 
 HEADERS = {
@@ -288,7 +289,6 @@ def extract_kickoff_and_stadium(row, full_text, is_home, default_stadium):
                 stadium = STADIUM_MAP[k]
                 break
 
-    # ホーム戦でスタジアム未検出の場合は本拠地スタジアムを自動補完
     if not stadium and is_home:
         stadium = default_stadium
 
@@ -302,7 +302,6 @@ def fetch_team_matches(team_cfg, existing_matches_dict):
     now = datetime.now(JST)
     current_ym = int(now.strftime("%Y%m"))
 
-    # シーズン開始（2026年8月）から現在月までを取得
     candidate_months = []
     for m in range(8, 13):
         ym = 2026 * 100 + m
@@ -360,14 +359,14 @@ def fetch_team_matches(team_cfg, existing_matches_dict):
                     ha_str = "H"
                     clean_opp = re.sub(r"(試合終了|公式記録|詳細|チケット販売中|DAZN|NHK|BS|\.|\d+)", " ", after_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "日産" not in w and "吹田" not in w and "埼玉" not in w and "国立" not in w and "MUFG" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "カシマ" not in w and "メルカリ" not in w and "日産" not in w and "吹田" not in w and "埼玉" not in w and "国立" not in w and "MUFG" not in w]
                     raw_opp = valid[0] if valid else "相手"
                 else:
                     my_score, opp_score = s2, s1
                     ha_str = "A"
                     clean_opp = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|試合終了|LIVE)", " ", before_score)
                     opp_candidates = re.findall(r"([^\s\d\(\)\[\]\:\-]+)", clean_opp)
-                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w and "ヨドコウ" not in w and "ハナサカ" not in w]
+                    valid = [w for w in opp_candidates if not any(kw in w for kw in keywords) and "スタジアム" not in w and "競技場" not in w and "メルスタ" not in w and "ヨドコウ" not in w and "ハナサカ" not in w and "水戸信金" not in w]
                     raw_opp = valid[-1] if valid else "相手"
 
                 opponent = re.sub(r"(明治安田|J1|第\d+節|\d{1,2}/\d{1,2}|スタジアム|競技場|STADIUM)", "", raw_opp).strip()
@@ -467,7 +466,8 @@ def process_team(team_cfg):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Update football points data")
-    parser.add_argument("--team", default="all", choices=["all", "marinos", "gamba", "kashima", "urawa"], help="Target team to update")
+    # 引数の choices 制約を外し、全チームキーを受け取れるように設定
+    parser.add_argument("--team", default="all", help="Target team to update")
     args = parser.parse_args()
 
     for t in TEAMS:
