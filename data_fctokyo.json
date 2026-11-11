@@ -1,6 +1,316 @@
 {
-  "updated_at": "",
-  "currentSeasonLabel": "",
-  "currentPoints": [],
-  "matches": []
+  "updated_at": "2026-11-11 20:15",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "currentPoints": [
+    0,
+    1,
+    4,
+    7,
+    8,
+    11,
+    14,
+    17,
+    20,
+    23,
+    24,
+    27,
+    30,
+    33,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "matches": [
+    {
+      "section": "第1節",
+      "date": "8/8",
+      "kickoff": "19:00",
+      "stadium": "町田GIONスタジアム",
+      "opponent": "町田",
+      "ha": "H",
+      "score": "1 - 5",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "マルセロ ヒアン 前 5'"
+        ],
+        "opponent": [
+          "ミッチェル デューク 前 27' 明本 考浩 前 47' 相馬 勇紀 後 6' テテ イェンギ 後 20' 岡村 大八 後 35'"
+        ]
+      },
+      "match_num": 1,
+      "cumulative_pts": 0
+    },
+    {
+      "section": "第2節",
+      "date": "8/15",
+      "kickoff": "19:00",
+      "stadium": "ノエビアスタジアム神戸",
+      "opponent": "神戸",
+      "ha": "A",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "長倉 幹樹 前 35' 後 24'"
+        ],
+        "opponent": [
+          "大迫 勇也 前 40' 武藤 嘉紀 後 48'"
+        ]
+      },
+      "match_num": 2,
+      "cumulative_pts": 1
+    },
+    {
+      "section": "第3節",
+      "date": "8/21",
+      "kickoff": "19:30",
+      "stadium": "MUFGスタジアム",
+      "opponent": "千葉",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "高 宇洋 後 27' 安斎 颯馬 後 40'"
+        ],
+        "opponent": []
+      },
+      "match_num": 3,
+      "cumulative_pts": 4
+    },
+    {
+      "section": "第4節",
+      "date": "8/29",
+      "kickoff": "18:30",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "長崎",
+      "ha": "A",
+      "score": "3 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "長倉 幹樹 前 38' 本間 至恩 前 49' マルセロ ヒアン 後 10'"
+        ],
+        "opponent": []
+      },
+      "match_num": 4,
+      "cumulative_pts": 7
+    },
+    {
+      "section": "第5節",
+      "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "IAIスタジアム日本平",
+      "opponent": "清水",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "安斎 颯馬 後 5'"
+        ],
+        "opponent": [
+          "木下 康介 後 8'"
+        ]
+      },
+      "match_num": 5,
+      "cumulative_pts": 8
+    },
+    {
+      "section": "第6節",
+      "date": "9/6",
+      "kickoff": "19:30",
+      "stadium": "味の素スタジアム",
+      "opponent": "京都",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マルセロ ヒアン 後 25' 長倉 幹樹 後 30'"
+        ],
+        "opponent": []
+      },
+      "match_num": 6,
+      "cumulative_pts": 11
+    },
+    {
+      "section": "第7節",
+      "date": "9/12",
+      "kickoff": "19:00",
+      "stadium": "パナソニック スタジアム 吹田",
+      "opponent": "G大阪",
+      "ha": "A",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "安斎 颯馬 前 38' 長倉 幹樹 後 7'"
+        ],
+        "opponent": []
+      },
+      "match_num": 7,
+      "cumulative_pts": 14
+    },
+    {
+      "section": "第8節",
+      "date": "9/19",
+      "kickoff": "19:00",
+      "stadium": "MUFGスタジアム",
+      "opponent": "名古屋",
+      "ha": "H",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "俵積田 晃太 後 11'"
+        ],
+        "opponent": []
+      },
+      "match_num": 8,
+      "cumulative_pts": 17
+    },
+    {
+      "section": "第9節",
+      "date": "10/10",
+      "kickoff": "15:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "浦和",
+      "ha": "H",
+      "score": "3 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "長倉 幹樹 後 18' 安斎 颯馬 後 24' 佐藤 恵允 後 40'"
+        ],
+        "opponent": []
+      },
+      "match_num": 9,
+      "cumulative_pts": 20
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "14:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "東京V",
+      "ha": "A",
+      "score": "4 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "アレクサンダー ショルツ 前 41' マルセロ ヒアン 後 10'(PK) 長倉 幹樹 後 23' ダニ ゴメス 後 49'"
+        ],
+        "opponent": []
+      },
+      "match_num": 10,
+      "cumulative_pts": 23
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "柏",
+      "ha": "H",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
+      "match_num": 11,
+      "cumulative_pts": 24
+    },
+    {
+      "section": "第12節",
+      "date": "10/25",
+      "kickoff": "16:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "水戸",
+      "ha": "H",
+      "score": "6 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "仲川 輝人 前 32' 後 1' 安斎 颯馬 後 21' ダニ ゴメス 後 25' アレクサンダー ショルツ 後 31' マルセロ ヒアン 後 48'"
+        ],
+        "opponent": []
+      },
+      "match_num": 12,
+      "cumulative_pts": 27
+    },
+    {
+      "section": "第13節",
+      "date": "10/31",
+      "kickoff": "14:00",
+      "stadium": "",
+      "opponent": "岡山",
+      "ha": "A",
+      "score": "4 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "仲川 輝人 前 49' 後 2' ダニ ゴメス 後 18' 48'"
+        ],
+        "opponent": []
+      },
+      "match_num": 13,
+      "cumulative_pts": 30
+    },
+    {
+      "section": "第14節",
+      "date": "11/7",
+      "kickoff": "15:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "鹿島",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "長倉 幹樹 後 15' ダニ ゴメス 後 50'"
+        ],
+        "opponent": []
+      },
+      "match_num": 14,
+      "cumulative_pts": 33
+    }
+  ]
 }
