@@ -55,7 +55,7 @@ TEAMS = [
     {
         "id_key": "kobe",
         "name": "ヴィッセル神戸",
-        "team_id": "135",
+        "team_id": "134",
         "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
         "data_file": "data_kobe.json",
         "default_stadium": "ノエビアスタジアム神戸"
@@ -119,7 +119,7 @@ TEAMS = [
     {
         "id_key": "kyoto",
         "name": "京都サンガF.C.",
-        "team_id": "134",
+        "team_id": "133",
         "keywords": ["京都", "京都サンガF.C.", "京都サンガ", "サンガ"],
         "data_file": "data_kyoto.json",
         "default_stadium": "サンガスタジアム by KYOCERA"
@@ -127,7 +127,7 @@ TEAMS = [
     {
         "id_key": "fukuoka",
         "name": "アビスパ福岡",
-        "team_id": "133",
+        "team_id": "135",
         "keywords": ["福岡", "アビスパ福岡", "アビスパ"],
         "data_file": "data_fukuoka.json",
         "default_stadium": "ベスト電器スタジアム"
