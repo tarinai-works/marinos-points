@@ -55,7 +55,7 @@ TEAMS = [
     {
         "id_key": "kobe",
         "name": "ヴィッセル神戸",
-        "team_id": "130",
+        "team_id": "136",
         "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
         "data_file": "data_kobe.json",
         "default_stadium": "ノエビアスタジアム神戸"
@@ -63,7 +63,7 @@ TEAMS = [
     {
         "id_key": "sanfrecce",
         "name": "サンフレッチェ広島",
-        "team_id": "131",
+        "team_id": "129",
         "keywords": ["広島", "サンフレッチェ広島", "サンフレッチェ"],
         "data_file": "data_sanfrecce.json",
         "default_stadium": "エディオンピースウイング広島"
@@ -71,7 +71,7 @@ TEAMS = [
     {
         "id_key": "fctokyo",
         "name": "FC東京",
-        "team_id": "123",
+        "team_id": "270",
         "keywords": ["FC東京", "F東京"],
         "data_file": "data_fctokyo.json",
         "default_stadium": "味の素スタジアム"
@@ -79,7 +79,7 @@ TEAMS = [
     {
         "id_key": "verdy",
         "name": "東京ヴェルディ",
-        "team_id": "121",
+        "team_id": "123",
         "keywords": ["東京V", "東京ヴェルディ", "ヴェルディ"],
         "data_file": "data_verdy.json",
         "default_stadium": "味の素スタジアム"
@@ -87,7 +87,7 @@ TEAMS = [
     {
         "id_key": "machida",
         "name": "FC町田ゼルビア",
-        "team_id": "10012",
+        "team_id": "30532",
         "keywords": ["町田", "FC町田ゼルビア", "ゼルビア"],
         "data_file": "data_machida.json",
         "default_stadium": "町田GIONスタジアム"
@@ -95,7 +95,7 @@ TEAMS = [
     {
         "id_key": "cerezo",
         "name": "セレッソ大阪",
-        "team_id": "129",
+        "team_id": "133",
         "keywords": ["C大阪", "セレッソ大阪", "セレッソ"],
         "data_file": "data_cerezo.json",
         "default_stadium": "YANMAR HANASAKA STADIUM"
@@ -135,7 +135,7 @@ TEAMS = [
     {
         "id_key": "shimizu",
         "name": "清水エスパルス",
-        "team_id": "125",
+        "team_id": "126",
         "keywords": ["清水", "清水エスパルス", "エスパルス"],
         "data_file": "data_shimizu.json",
         "default_stadium": "IAIスタジアム日本平"
@@ -143,7 +143,7 @@ TEAMS = [
     {
         "id_key": "nagasaki",
         "name": "V・ファーレン長崎",
-        "team_id": "10023",
+        "team_id": "30531",
         "keywords": ["長崎", "V・ファーレン長崎", "Vファーレン"],
         "data_file": "data_nagasaki.json",
         "default_stadium": "PEACE STADIUM Connected by SoftBank"
@@ -151,7 +151,7 @@ TEAMS = [
     {
         "id_key": "okayama",
         "name": "ファジアーノ岡山",
-        "team_id": "10015",
+        "team_id": "30314",
         "keywords": ["岡山", "ファジアーノ岡山", "ファジアーノ"],
         "data_file": "data_okayama.json",
         "default_stadium": "シティライトスタジアム"
@@ -159,7 +159,7 @@ TEAMS = [
     {
         "id_key": "chiba",
         "name": "ジェフユナイテッド千葉",
-        "team_id": "119",
+        "team_id": "121",
         "keywords": ["千葉", "ジェフユナイテッド千葉", "ジェフ千葉", "ジェフ"],
         "data_file": "data_chiba.json",
         "default_stadium": "フクダ電子アリーナ"
@@ -167,7 +167,7 @@ TEAMS = [
     {
         "id_key": "mito",
         "name": "水戸ホーリーホック",
-        "team_id": "276",
+        "team_id": "176",
         "keywords": ["水戸", "水戸ホーリーホック", "ホーリーホック"],
         "data_file": "data_mito.json",
         "default_stadium": "水戸信用金庫スタジアム"
