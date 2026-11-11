@@ -1,6 +1,328 @@
 {
-  "updated_at": "",
-  "currentSeasonLabel": "",
-  "currentPoints": [],
-  "matches": []
+  "updated_at": "2026-11-11 17:58",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "currentPoints": [
+    3,
+    3,
+    3,
+    3,
+    6,
+    7,
+    7,
+    10,
+    10,
+    10,
+    13,
+    13,
+    13,
+    14,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "matches": [
+    {
+      "section": "第1節",
+      "date": "8/8",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "大迫 勇也 前 23'"
+        ],
+        "opponent": []
+      },
+      "match_num": 1,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第2節",
+      "date": "8/15",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "藤本 一輝 前 35' 辻岡 佑真 前 43' ウェリック ポポ 後 28'"
+        ]
+      },
+      "match_num": 2,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第3節",
+      "date": "8/22",
+      "kickoff": "18:00",
+      "stadium": "",
+      "opponent": "鹿島",
+      "ha": "A",
+      "score": "2 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "師岡 柊生 前 43' オウンゴール 後 31'"
+        ],
+        "opponent": [
+          "オウンゴール 前 31' レオ セアラ 後 15' チャヴリッチ 後 19'"
+        ]
+      },
+      "match_num": 3,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第4節",
+      "date": "8/29",
+      "kickoff": "19:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "京都",
+      "ha": "A",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "碓井 聖生 後 41'"
+        ],
+        "opponent": [
+          "ラファエル エリアス 前 8' 新井 晴樹 後 18'"
+        ]
+      },
+      "match_num": 4,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第5節",
+      "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "3 - 2",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス サヴィオ 前 7' 林 幸多郎 後 38' オナイウ 阿道 後 40'"
+        ],
+        "opponent": [
+          "碓井 聖生 前 24' 師岡 柊生 前 35'"
+        ]
+      },
+      "match_num": 5,
+      "cumulative_pts": 6
+    },
+    {
+      "section": "第6節",
+      "date": "9/5",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "木本 恭生 後 41'"
+        ],
+        "opponent": [
+          "師岡 柊生 後 8'"
+        ]
+      },
+      "match_num": 6,
+      "cumulative_pts": 7
+    },
+    {
+      "section": "第7節",
+      "date": "9/12",
+      "kickoff": "18:30",
+      "stadium": "IAIスタジアム日本平",
+      "opponent": "清水",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "嶋本 悠大 後 26'"
+        ]
+      },
+      "match_num": 7,
+      "cumulative_pts": 7
+    },
+    {
+      "section": "第8節",
+      "date": "9/19",
+      "kickoff": "18:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "東 俊希 後 23'"
+        ],
+        "opponent": []
+      },
+      "match_num": 8,
+      "cumulative_pts": 10
+    },
+    {
+      "section": "第9節",
+      "date": "10/10",
+      "kickoff": "15:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "白井 康介 後 16'"
+        ],
+        "opponent": [
+          "前嶋 洋太 前 8' 橋本 悠 後 31'"
+        ]
+      },
+      "match_num": 9,
+      "cumulative_pts": 10
+    },
+    {
+      "section": "第10節",
+      "date": "10/18",
+      "kickoff": "16:00",
+      "stadium": "町田GIONスタジアム",
+      "opponent": "町田",
+      "ha": "A",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "テテ イェンギ 前 22' 前 寛之 後 28' 望月 ヘンリー海輝 後 31'"
+        ]
+      },
+      "match_num": 10,
+      "cumulative_pts": 10
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "ウェルトン 後 5' 宇佐美 貴史 後 33'"
+        ],
+        "opponent": [
+          "橋本 悠 後 30'"
+        ]
+      },
+      "match_num": 11,
+      "cumulative_pts": 13
+    },
+    {
+      "section": "第12節",
+      "date": "10/24",
+      "kickoff": "15:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "東京V",
+      "ha": "A",
+      "score": "1 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "ウェリック ポポ 後 11'"
+        ],
+        "opponent": [
+          "熊取谷 一星 前 10' 松橋 優安 後 29' 寺沼 星文 後 45'"
+        ]
+      },
+      "match_num": 12,
+      "cumulative_pts": 13
+    },
+    {
+      "section": "第13節",
+      "date": "11/1",
+      "kickoff": "14:00",
+      "stadium": "フクダ電子アリーナ",
+      "opponent": "千葉",
+      "ha": "A",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "姫野 誠 前 25' 前 貴之 後 20' 呉屋 大翔 後 50'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 13
+    },
+    {
+      "section": "第14節",
+      "date": "11/7",
+      "kickoff": "15:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "保田 堅心 前 11'"
+        ],
+        "opponent": [
+          "碓井 聖生 後 27'"
+        ]
+      },
+      "match_num": 14,
+      "cumulative_pts": 14
+    }
+  ]
 }
