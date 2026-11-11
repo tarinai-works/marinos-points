@@ -119,7 +119,7 @@ TEAMS = [
     {
         "id_key": "kyoto",
         "name": "京都サンガF.C.",
-        "team_id": "131",
+        "team_id": "134",
         "keywords": ["京都", "京都サンガF.C.", "京都サンガ", "サンガ"],
         "data_file": "data_kyoto.json",
         "default_stadium": "サンガスタジアム by KYOCERA"
