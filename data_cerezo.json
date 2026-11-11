@@ -1,6 +1,324 @@
 {
-  "updated_at": "",
-  "currentSeasonLabel": "",
-  "currentPoints": [],
-  "matches": []
+  "updated_at": "2026-11-11 20:27",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "currentPoints": [
+    3,
+    3,
+    6,
+    6,
+    9,
+    10,
+    10,
+    11,
+    12,
+    12,
+    13,
+    14,
+    14,
+    17,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "matches": [
+    {
+      "section": "第1節",
+      "date": "8/8",
+      "kickoff": "19:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "岡山",
+      "ha": "H",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "櫻川 ソロモン 前 20' 横山 夢樹 前 24'"
+        ],
+        "opponent": [
+          "ブラウン ノア 賢信 前 8'"
+        ]
+      },
+      "match_num": 1,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第2節",
+      "date": "8/15",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "藤本 一輝 前 35' 辻岡 佑真 前 43' ウェリック ポポ 後 28'"
+        ]
+      },
+      "match_num": 2,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第3節",
+      "date": "8/22",
+      "kickoff": "19:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "清水",
+      "ha": "H",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "チアゴ アンドラーデ 後 17'"
+        ],
+        "opponent": []
+      },
+      "match_num": 3,
+      "cumulative_pts": 6
+    },
+    {
+      "section": "第4節",
+      "date": "8/29",
+      "kickoff": "19:00",
+      "stadium": "ノエビアスタジアム神戸",
+      "opponent": "神戸",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "小松 蓮 後 26'(PK)"
+        ]
+      },
+      "match_num": 4,
+      "cumulative_pts": 6
+    },
+    {
+      "section": "第5節",
+      "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "柏",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "櫻川 ソロモン 前 20' 後 23'(PK)"
+        ],
+        "opponent": []
+      },
+      "match_num": 5,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第6節",
+      "date": "9/6",
+      "kickoff": "19:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "東京V",
+      "ha": "H",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
+      "match_num": 6,
+      "cumulative_pts": 10
+    },
+    {
+      "section": "第7節",
+      "date": "9/12",
+      "kickoff": "19:00",
+      "stadium": "エディオンピースウイング広島",
+      "opponent": "広島",
+      "ha": "A",
+      "score": "1 - 6",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "上門 知樹 後 46'"
+        ],
+        "opponent": [
+          "鈴木 章斗 前 10'(PK) 48' 鮎川 峻 前 18' 後 12' 35'(PK) 中野 就斗 後 10'"
+        ]
+      },
+      "match_num": 7,
+      "cumulative_pts": 10
+    },
+    {
+      "section": "第8節",
+      "date": "9/19",
+      "kickoff": "18:30",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "長崎",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "ルーカス フェルナンデス 後 6'(PK)"
+        ],
+        "opponent": [
+          "マテウス ジェズス 前 34'"
+        ]
+      },
+      "match_num": 8,
+      "cumulative_pts": 11
+    },
+    {
+      "section": "第9節",
+      "date": "10/10",
+      "kickoff": "14:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "横浜FM",
+      "ha": "H",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
+      "match_num": 9,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "15:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "川崎F",
+      "ha": "H",
+      "score": "2 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "ルーカス フェルナンデス 前 43'(PK) 小見 洋太 後 3'"
+        ],
+        "opponent": [
+          "ペドロ ホマーノ 前 10' 橘田 健人 前 48' 脇坂 泰斗 後 29' 大関 友翔 後 44'"
+        ]
+      },
+      "match_num": 10,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "豊田スタジアム",
+      "opponent": "名古屋",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "パブロ サバック 後 17'"
+        ],
+        "opponent": [
+          "中山 克広 前 3'"
+        ]
+      },
+      "match_num": 11,
+      "cumulative_pts": 13
+    },
+    {
+      "section": "第12節",
+      "date": "10/25",
+      "kickoff": "15:00",
+      "stadium": "YANMAR HANASAKA STADIUM",
+      "opponent": "千葉",
+      "ha": "H",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "櫻川 ソロモン 後 51' 横山 夢樹 後 53'"
+        ],
+        "opponent": [
+          "姫野 誠 前 23' エリソン 後 2'"
+        ]
+      },
+      "match_num": 12,
+      "cumulative_pts": 14
+    },
+    {
+      "section": "第13節",
+      "date": "10/31",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "鹿島",
+      "ha": "A",
+      "score": "1 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "パブロ サバック 前 25'"
+        ],
+        "opponent": [
+          "エウベル 前 14' 22' マテウス ブエノ 前 36' チャヴリッチ 後 25'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 14
+    },
+    {
+      "section": "第14節",
+      "date": "11/8",
+      "kickoff": "15:00",
+      "stadium": "パナソニック スタジアム 吹田",
+      "opponent": "G大阪",
+      "ha": "A",
+      "score": "3 - 2",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "井上 黎生人 前 11' パブロ サバック 後 19' 奥田 勇斗 後 29'"
+        ],
+        "opponent": [
+          "イッサム ジェバリ 後 10' イーライ アダムス 後 36'"
+        ]
+      },
+      "match_num": 14,
+      "cumulative_pts": 17
+    }
+  ]
 }
