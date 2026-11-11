@@ -1,6 +1,326 @@
 {
-  "updated_at": "",
-  "currentSeasonLabel": "",
-  "currentPoints": [],
-  "matches": []
+  "updated_at": "2026-11-11 18:57",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "currentPoints": [
+    0,
+    1,
+    4,
+    5,
+    8,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "matches": [
+    {
+      "section": "第1節",
+      "date": "8/8",
+      "kickoff": "19:00",
+      "stadium": "三協フロンテア柏スタジアム",
+      "opponent": "柏",
+      "ha": "A",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "内野 航太郎 後 23'(PK)"
+        ],
+        "opponent": [
+          "垣田 裕暉 前 5' 小泉 佳穂 前 36'"
+        ]
+      },
+      "match_num": 1,
+      "cumulative_pts": 0
+    },
+    {
+      "section": "第2節",
+      "date": "8/15",
+      "kickoff": "18:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "G大阪",
+      "ha": "H",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "鳥海 芳樹 前 18'"
+        ],
+        "opponent": [
+          "中谷 進之介 後 29'"
+        ]
+      },
+      "match_num": 2,
+      "cumulative_pts": 1
+    },
+    {
+      "section": "第3節",
+      "date": "8/22",
+      "kickoff": "19:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "京都",
+      "ha": "A",
+      "score": "3 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "真瀬 拓海 前 17' 木本 恭生 前 31' 加藤 千尋 後 23'"
+        ],
+        "opponent": [
+          "中野 瑠馬 後 37'"
+        ]
+      },
+      "match_num": 3,
+      "cumulative_pts": 4
+    },
+    {
+      "section": "第4節",
+      "date": "8/29",
+      "kickoff": "18:00",
+      "stadium": "町田GIONスタジアム",
+      "opponent": "町田",
+      "ha": "H",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "渡邉 新太 前 28'"
+        ],
+        "opponent": [
+          "相馬 勇紀 前 33'"
+        ]
+      },
+      "match_num": 4,
+      "cumulative_pts": 5
+    },
+    {
+      "section": "第5節",
+      "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "鹿島",
+      "ha": "H",
+      "score": "4 - 2",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "渡邉 新太 前 8'(PK) 21' 後 3' 10'"
+        ],
+        "opponent": [
+          "レオ セアラ 後 8' 38'"
+        ]
+      },
+      "match_num": 5,
+      "cumulative_pts": 8
+    },
+    {
+      "section": "第6節",
+      "date": "9/5",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "木本 恭生 後 41'"
+        ],
+        "opponent": [
+          "師岡 柊生 後 8'"
+        ]
+      },
+      "match_num": 6,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第7節",
+      "date": "9/12",
+      "kickoff": "18:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "川崎F",
+      "ha": "H",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "マルシーニョ 後 14'"
+        ]
+      },
+      "match_num": 7,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第8節",
+      "date": "9/19",
+      "kickoff": "19:30",
+      "stadium": "日産スタジアム",
+      "opponent": "横浜FM",
+      "ha": "A",
+      "score": "0 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "ジェイソン キニョーネス 前 8' 山根 陸 後 38'"
+        ]
+      },
+      "match_num": 8,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第9節",
+      "date": "10/11",
+      "kickoff": "15:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "清水",
+      "ha": "H",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "加藤 千尋 後 3'"
+        ],
+        "opponent": [
+          "藤井 智也 後 30' 須貝 英大 後 46'"
+        ]
+      },
+      "match_num": 9,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "16:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "浦和",
+      "ha": "H",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "笹 修大 後 49'"
+        ]
+      },
+      "match_num": 10,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "",
+      "opponent": "岡山",
+      "ha": "A",
+      "score": "0 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "江坂 任 後 7' 20'"
+        ]
+      },
+      "match_num": 11,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第12節",
+      "date": "10/25",
+      "kickoff": "16:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "FC東京",
+      "ha": "A",
+      "score": "0 - 6",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "仲川 輝人 前 32' 後 1' 安斎 颯馬 後 21' ダニ ゴメス 後 25' アレクサンダー ショルツ 後 31' マルセロ ヒアン 後 48'"
+        ]
+      },
+      "match_num": 12,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第13節",
+      "date": "10/31",
+      "kickoff": "14:00",
+      "stadium": "水戸信用金庫スタジアム",
+      "opponent": "広島",
+      "ha": "H",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "鈴木 章斗 前 30' 中野 就斗 後 9' 菅 大輝 後 38'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第14節",
+      "date": "11/8",
+      "kickoff": "17:00",
+      "stadium": "フクダ電子アリーナ",
+      "opponent": "千葉",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "ホシャ 後 41'(PK)"
+        ]
+      },
+      "match_num": 14,
+      "cumulative_pts": 9
+    }
+  ]
 }
