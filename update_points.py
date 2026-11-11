@@ -55,7 +55,7 @@ TEAMS = [
     {
         "id_key": "kobe",
         "name": "ヴィッセル神戸",
-        "team_id": "134",
+        "team_id": "135",
         "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
         "data_file": "data_kobe.json",
         "default_stadium": "ノエビアスタジアム神戸"
