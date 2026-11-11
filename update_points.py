@@ -55,7 +55,7 @@ TEAMS = [
     {
         "id_key": "kobe",
         "name": "ヴィッセル神戸",
-        "team_id": "134",
+        "team_id": "130",
         "keywords": ["神戸", "ヴィッセル神戸", "ヴィッセル"],
         "data_file": "data_kobe.json",
         "default_stadium": "ノエビアスタジアム神戸"
@@ -63,7 +63,7 @@ TEAMS = [
     {
         "id_key": "sanfrecce",
         "name": "サンフレッチェ広島",
-        "team_id": "132",
+        "team_id": "131",
         "keywords": ["広島", "サンフレッチェ広島", "サンフレッチェ"],
         "data_file": "data_sanfrecce.json",
         "default_stadium": "エディオンピースウイング広島"
@@ -111,7 +111,7 @@ TEAMS = [
     {
         "id_key": "kashiwa",
         "name": "柏レイソル",
-        "team_id": "125",
+        "team_id": "132",
         "keywords": ["柏", "柏レイソル", "レイソル"],
         "data_file": "data_kashiwa.json",
         "default_stadium": "三協フロンテア柏スタジアム"
@@ -119,7 +119,7 @@ TEAMS = [
     {
         "id_key": "kyoto",
         "name": "京都サンガF.C.",
-        "team_id": "133",
+        "team_id": "134",
         "keywords": ["京都", "京都サンガF.C.", "京都サンガ", "サンガ"],
         "data_file": "data_kyoto.json",
         "default_stadium": "サンガスタジアム by KYOCERA"
@@ -135,7 +135,7 @@ TEAMS = [
     {
         "id_key": "shimizu",
         "name": "清水エスパルス",
-        "team_id": "136",
+        "team_id": "125",
         "keywords": ["清水", "清水エスパルス", "エスパルス"],
         "data_file": "data_shimizu.json",
         "default_stadium": "IAIスタジアム日本平"
