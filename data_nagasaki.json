@@ -1,6 +1,328 @@
 {
-  "updated_at": "",
-  "currentSeasonLabel": "",
-  "currentPoints": [],
-  "matches": []
+  "updated_at": "2026-11-11 19:09",
+  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "currentPoints": [
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    7,
+    8,
+    9,
+    9,
+    12,
+    12,
+    12,
+    13,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "matches": [
+    {
+      "section": "第1節",
+      "date": "8/9",
+      "kickoff": "19:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "京都",
+      "ha": "H",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "チアゴ サンタナ 前 11' 29'"
+        ],
+        "opponent": [
+          "ラファエル エリアス 後 9'"
+        ]
+      },
+      "match_num": 1,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第2節",
+      "date": "8/15",
+      "kickoff": "18:55",
+      "stadium": "",
+      "opponent": "岡山",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "ルカオ 後 9'"
+        ]
+      },
+      "match_num": 2,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第3節",
+      "date": "8/21",
+      "kickoff": "19:00",
+      "stadium": "三協フロンテア柏スタジアム",
+      "opponent": "柏",
+      "ha": "A",
+      "score": "2 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "松本 天夢 後 6' 岩崎 悠人 後 11'"
+        ],
+        "opponent": [
+          "垣田 裕暉 前 6' 小泉 佳穂 後 18' 瀬川 祐輔 後 32' 弓場 堅真 後 38'"
+        ]
+      },
+      "match_num": 3,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第4節",
+      "date": "8/29",
+      "kickoff": "18:30",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "FC東京",
+      "ha": "H",
+      "score": "0 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "長倉 幹樹 前 38' 本間 至恩 前 49' マルセロ ヒアン 後 10'"
+        ]
+      },
+      "match_num": 4,
+      "cumulative_pts": 3
+    },
+    {
+      "section": "第5節",
+      "date": "9/2",
+      "kickoff": "19:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "G大阪",
+      "ha": "H",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "保田 堅心 後 34' マテウス ジェズス 後 39'"
+        ],
+        "opponent": [
+          "デニス ヒュメット 後 45' イッサム ジェバリ 後 49'"
+        ]
+      },
+      "match_num": 5,
+      "cumulative_pts": 4
+    },
+    {
+      "section": "第6節",
+      "date": "9/6",
+      "kickoff": "19:00",
+      "stadium": "ノエビアスタジアム神戸",
+      "opponent": "神戸",
+      "ha": "A",
+      "score": "1 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "松本 天夢 後 48'"
+        ],
+        "opponent": [
+          "永戸 勝也 前 2' 郷家 友太 前 34' 後 7'"
+        ]
+      },
+      "match_num": 6,
+      "cumulative_pts": 4
+    },
+    {
+      "section": "第7節",
+      "date": "9/12",
+      "kickoff": "19:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "名古屋",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "マテウス ジェズス 前 36'(PK) チアゴ サンタナ 後 12'"
+        ],
+        "opponent": []
+      },
+      "match_num": 7,
+      "cumulative_pts": 7
+    },
+    {
+      "section": "第8節",
+      "date": "9/19",
+      "kickoff": "18:30",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "C大阪",
+      "ha": "H",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "マテウス ジェズス 前 34'"
+        ],
+        "opponent": [
+          "ルーカス フェルナンデス 後 6'(PK)"
+        ]
+      },
+      "match_num": 8,
+      "cumulative_pts": 8
+    },
+    {
+      "section": "第9節",
+      "date": "10/11",
+      "kickoff": "14:00",
+      "stadium": "フクダ電子アリーナ",
+      "opponent": "千葉",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "保田 堅心 後 50'"
+        ],
+        "opponent": [
+          "安井 拓也 前 5'"
+        ]
+      },
+      "match_num": 9,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第10節",
+      "date": "10/17",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "鹿島",
+      "ha": "A",
+      "score": "0 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "レオ セアラ 前 2'(PK) チャヴリッチ 前 5'"
+        ]
+      },
+      "match_num": 10,
+      "cumulative_pts": 9
+    },
+    {
+      "section": "第11節",
+      "date": "10/21",
+      "kickoff": "19:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "広島",
+      "ha": "H",
+      "score": "4 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "翁長 聖 前 36' マテウス ジェズス 前 45' 保田 堅心 後 28' 52'"
+        ],
+        "opponent": []
+      },
+      "match_num": 11,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第12節",
+      "date": "10/25",
+      "kickoff": "15:00",
+      "stadium": "埼玉スタジアム2002",
+      "opponent": "浦和",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "マテウス サヴィオ 後 26'"
+        ]
+      },
+      "match_num": 12,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第13節",
+      "date": "11/1",
+      "kickoff": "14:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "東京V",
+      "ha": "H",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "チアゴ サンタナ 後 31'"
+        ],
+        "opponent": [
+          "染野 唯月 前 57' 一美 和成 後 36'"
+        ]
+      },
+      "match_num": 13,
+      "cumulative_pts": 12
+    },
+    {
+      "section": "第14節",
+      "date": "11/7",
+      "kickoff": "15:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "保田 堅心 前 11'"
+        ],
+        "opponent": [
+          "碓井 聖生 後 27'"
+        ]
+      },
+      "match_num": 14,
+      "cumulative_pts": 13
+    }
+  ]
 }
