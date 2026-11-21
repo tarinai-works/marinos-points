@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-11 20:13",
-  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "updated_at": "2026-11-21 18:44",
+  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -16,7 +16,7 @@
     26,
     29,
     30,
-    null,
+    31,
     null,
     null,
     null,
@@ -311,6 +311,27 @@
       },
       "match_num": 14,
       "cumulative_pts": 30
+    },
+    {
+      "section": "第15節",
+      "date": "11/21",
+      "kickoff": "14:00",
+      "stadium": "エディオンピースウイング広島",
+      "opponent": "横浜FM",
+      "ha": "H",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "鮎川 峻 前 29' 菅 大輝 後 27'"
+        ],
+        "opponent": [
+          "田中 雄大 後 21' 二田 理央 後 48'"
+        ]
+      },
+      "match_num": 15,
+      "cumulative_pts": 31
     }
   ]
 }

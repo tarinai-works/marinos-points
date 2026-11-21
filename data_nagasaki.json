@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-11 19:09",
-  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "updated_at": "2026-11-21 18:45",
+  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
   "currentPoints": [
     3,
     3,
@@ -16,7 +16,7 @@
     12,
     12,
     13,
-    null,
+    14,
     null,
     null,
     null,
@@ -323,6 +323,23 @@
       },
       "match_num": 14,
       "cumulative_pts": 13
+    },
+    {
+      "section": "第15節",
+      "date": "11/21",
+      "kickoff": "14:00",
+      "stadium": "町田GIONスタジアム",
+      "opponent": "町田",
+      "ha": "A",
+      "score": "0 - 0",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [],
+        "opponent": []
+      },
+      "match_num": 15,
+      "cumulative_pts": 14
     }
   ]
 }

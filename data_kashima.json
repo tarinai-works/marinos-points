@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-09 09:57",
-  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "updated_at": "2026-11-21 18:43",
+  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -16,7 +16,7 @@
     20,
     23,
     23,
-    null,
+    24,
     null,
     null,
     null,
@@ -485,6 +485,27 @@
       },
       "match_num": 14,
       "cumulative_pts": 23
+    },
+    {
+      "section": "第15節",
+      "date": "11/20",
+      "kickoff": "19:00",
+      "stadium": "メルカリスタジアム",
+      "opponent": "清水",
+      "ha": "H",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "レオ セアラ 後 43'"
+        ],
+        "opponent": [
+          "北川 航也 後 28'"
+        ]
+      },
+      "match_num": 15,
+      "cumulative_pts": 24
     }
   ]
 }

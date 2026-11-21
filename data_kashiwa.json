@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-11 20:52",
-  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "updated_at": "2026-11-21 18:45",
+  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -16,7 +16,7 @@
     25,
     28,
     31,
-    null,
+    31,
     null,
     null,
     null,
@@ -322,6 +322,25 @@
         ]
       },
       "match_num": 14,
+      "cumulative_pts": 31
+    },
+    {
+      "section": "第15節",
+      "date": "11/20",
+      "kickoff": "19:00",
+      "stadium": "三協フロンテア柏スタジアム",
+      "opponent": "千葉",
+      "ha": "H",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "呉屋 大翔 後 31'"
+        ]
+      },
+      "match_num": 15,
       "cumulative_pts": 31
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-11 20:56",
-  "currentSeasonLabel": "2026 - 27 シーズン (14試合消化時点)",
+  "updated_at": "2026-11-21 18:45",
+  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
   "currentPoints": [
     0,
     1,
@@ -16,7 +16,7 @@
     10,
     13,
     16,
-    null,
+    19,
     null,
     null,
     null,
@@ -325,6 +325,27 @@
       },
       "match_num": 14,
       "cumulative_pts": 16
+    },
+    {
+      "section": "第15節",
+      "date": "11/21",
+      "kickoff": "14:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "浦和",
+      "ha": "H",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "アレックス ソウザ 後 30' 加藤 拓己 後 42'"
+        ],
+        "opponent": [
+          "渡邊 凌磨 前 35'"
+        ]
+      },
+      "match_num": 15,
+      "cumulative_pts": 19
     }
   ]
 }
