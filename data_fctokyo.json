@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:44",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:19",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     0,
     1,
@@ -17,7 +17,7 @@
     30,
     33,
     36,
-    null,
+    37,
     null,
     null,
     null,
@@ -330,6 +330,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 36
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "味の素スタジアム",
+      "opponent": "広島",
+      "ha": "H",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "長倉 幹樹 後 29' 仲川 輝人 後 34'"
+        ],
+        "opponent": [
+          "鮎川 峻 前 15' クシニ イェンギ 後 44'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 37
     }
   ]
 }

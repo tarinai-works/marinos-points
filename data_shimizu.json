@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:45",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:20",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     3,
     3,
@@ -17,7 +17,7 @@
     14,
     14,
     15,
-    null,
+    15,
     null,
     null,
     null,
@@ -337,6 +337,25 @@
         ]
       },
       "match_num": 15,
+      "cumulative_pts": 15
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "",
+      "opponent": "岡山",
+      "ha": "A",
+      "score": "0 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "ブラウン ノア 賢信 後 18' 鈴木 喜丈 後 30'"
+        ]
+      },
+      "match_num": 16,
       "cumulative_pts": 15
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:45",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:20",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -17,7 +17,7 @@
     7,
     8,
     8,
-    null,
+    8,
     null,
     null,
     null,
@@ -341,6 +341,27 @@
         ]
       },
       "match_num": 15,
+      "cumulative_pts": 8
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "横浜FM",
+      "ha": "H",
+      "score": "1 - 2",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "ウェリック ポポ 前 12'"
+        ],
+        "opponent": [
+          "二田 理央 後 46' 遠野 大弥 後 50'"
+        ]
+      },
+      "match_num": 16,
       "cumulative_pts": 8
     }
   ]

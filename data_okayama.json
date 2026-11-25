@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:45",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:20",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -17,7 +17,7 @@
     16,
     17,
     20,
-    null,
+    23,
     null,
     null,
     null,
@@ -342,6 +342,25 @@
       },
       "match_num": 15,
       "cumulative_pts": 20
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "シティライトスタジアム",
+      "opponent": "清水",
+      "ha": "H",
+      "score": "2 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "ブラウン ノア 賢信 後 18' 鈴木 喜丈 後 30'"
+        ],
+        "opponent": []
+      },
+      "match_num": 16,
+      "cumulative_pts": 23
     }
   ]
 }

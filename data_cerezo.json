@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:44",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:19",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     3,
     3,
@@ -17,7 +17,7 @@
     14,
     17,
     17,
-    null,
+    18,
     null,
     null,
     null,
@@ -338,6 +338,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 17
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:30",
+      "stadium": "埼玉スタジアム2002",
+      "opponent": "浦和",
+      "ha": "A",
+      "score": "2 - 2",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "井上 黎生人 後 11' 櫻川 ソロモン 後 17'"
+        ],
+        "opponent": [
+          "オナイウ 阿道 前 11' 金子 拓郎 前 22'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 18
     }
   ]
 }

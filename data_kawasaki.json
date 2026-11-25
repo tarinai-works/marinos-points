@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:44",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:19",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     1,
     2,
@@ -17,7 +17,7 @@
     22,
     22,
     25,
-    null,
+    28,
     null,
     null,
     null,
@@ -352,6 +352,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 25
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "PEACE STADIUM Connected by SoftBank",
+      "opponent": "長崎",
+      "ha": "A",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "フィリップ ウレモヴィッチ 前 22' 伊藤 達哉 後 3'"
+        ],
+        "opponent": [
+          "岩崎 悠人 前 18'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 28
     }
   ],
   "avgPace": [

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:43",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:18",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -17,7 +17,7 @@
     21,
     22,
     23,
-    null,
+    26,
     null,
     null,
     null,
@@ -500,6 +500,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 23
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "ベスト電器スタジアム",
+      "opponent": "福岡",
+      "ha": "A",
+      "score": "2 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "二田 理央 後 46' 遠野 大弥 後 50'"
+        ],
+        "opponent": [
+          "ウェリック ポポ 前 12'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 26
     }
   ]
 }

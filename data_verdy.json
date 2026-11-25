@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-21 18:44",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-25 22:19",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     1,
     1,
@@ -17,7 +17,7 @@
     11,
     14,
     15,
-    null,
+    15,
     null,
     null,
     null,
@@ -333,6 +333,25 @@
         "opponent": []
       },
       "match_num": 15,
+      "cumulative_pts": 15
+    },
+    {
+      "section": "第16節",
+      "date": "11/25",
+      "kickoff": "19:00",
+      "stadium": "",
+      "opponent": "水戸",
+      "ha": "A",
+      "score": "0 - 1",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [],
+        "opponent": [
+          "木本 恭生 後 23'"
+        ]
+      },
+      "match_num": 16,
       "cumulative_pts": 15
     }
   ]
