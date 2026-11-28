@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25 22:20",
-  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
+  "updated_at": "2026-11-28 17:26",
+  "currentSeasonLabel": "2026 - 27 シーズン (17試合消化時点)",
   "currentPoints": [
     0,
     0,
@@ -18,7 +18,7 @@
     13,
     16,
     16,
-    null,
+    16,
     null,
     null,
     null,
@@ -358,6 +358,27 @@
         ]
       },
       "match_num": 16,
+      "cumulative_pts": 16
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "15:00",
+      "stadium": "ノエビアスタジアム神戸",
+      "opponent": "神戸",
+      "ha": "A",
+      "score": "1 - 3",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "姫野 誠 後 11'"
+        ],
+        "opponent": [
+          "飯野 七聖 前 21' 小松 蓮 後 29' 53'"
+        ]
+      },
+      "match_num": 17,
       "cumulative_pts": 16
     }
   ]

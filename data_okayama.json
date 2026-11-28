@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25 22:20",
-  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
+  "updated_at": "2026-11-28 17:26",
+  "currentSeasonLabel": "2026 - 27 シーズン (17試合消化時点)",
   "currentPoints": [
     0,
     3,
@@ -18,7 +18,7 @@
     17,
     20,
     23,
-    null,
+    24,
     null,
     null,
     null,
@@ -361,6 +361,27 @@
       },
       "match_num": 16,
       "cumulative_pts": 23
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "15:00",
+      "stadium": "",
+      "opponent": "鹿島",
+      "ha": "A",
+      "score": "1 - 1",
+      "result": "DRAW",
+      "pts": 1,
+      "scorers": {
+        "my_team": [
+          "オウンゴール 後 46'"
+        ],
+        "opponent": [
+          "植田 直通 後 20'"
+        ]
+      },
+      "match_num": 17,
+      "cumulative_pts": 24
     }
   ]
 }

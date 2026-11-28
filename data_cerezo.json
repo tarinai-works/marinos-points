@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25 22:19",
-  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
+  "updated_at": "2026-11-28 17:25",
+  "currentSeasonLabel": "2026 - 27 シーズン (17試合消化時点)",
   "currentPoints": [
     3,
     3,
@@ -18,7 +18,7 @@
     17,
     17,
     18,
-    null,
+    18,
     null,
     null,
     null,
@@ -358,6 +358,27 @@
         ]
       },
       "match_num": 16,
+      "cumulative_pts": 18
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "14:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "京都",
+      "ha": "A",
+      "score": "1 - 4",
+      "result": "LOSE",
+      "pts": 0,
+      "scorers": {
+        "my_team": [
+          "阪田 澪哉 前 45'"
+        ],
+        "opponent": [
+          "ラファエル エリアス 前 25' 40'(PK) 後 36' 新井 晴樹 後 8'"
+        ]
+      },
+      "match_num": 17,
       "cumulative_pts": 18
     }
   ],

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25 22:20",
-  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
+  "updated_at": "2026-11-28 17:26",
+  "currentSeasonLabel": "2026 - 27 シーズン (17試合消化時点)",
   "currentPoints": [
     3,
     3,
@@ -18,7 +18,7 @@
     14,
     15,
     15,
-    null,
+    18,
     null,
     null,
     null,
@@ -357,6 +357,25 @@
       },
       "match_num": 16,
       "cumulative_pts": 15
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "14:00",
+      "stadium": "IAIスタジアム日本平",
+      "opponent": "浦和",
+      "ha": "H",
+      "score": "1 - 0",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "カピシャーバ 後 32'"
+        ],
+        "opponent": []
+      },
+      "match_num": 17,
+      "cumulative_pts": 18
     }
   ],
   "avgPace": [

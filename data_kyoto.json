@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-25 22:19",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-28 17:26",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     0,
     1,
@@ -17,7 +17,7 @@
     13,
     16,
     19,
-    null,
+    22,
     null,
     null,
     null,
@@ -346,6 +346,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 19
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "14:00",
+      "stadium": "サンガスタジアム by KYOCERA",
+      "opponent": "C大阪",
+      "ha": "H",
+      "score": "4 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "ラファエル エリアス 前 25' 40'(PK) 後 36' 新井 晴樹 後 8'"
+        ],
+        "opponent": [
+          "阪田 澪哉 前 45'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 22
     }
   ],
   "avgPace": [
