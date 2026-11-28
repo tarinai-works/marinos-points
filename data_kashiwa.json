@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-28 17:26",
-  "currentSeasonLabel": "2026 - 27 シーズン (15試合消化時点)",
+  "updated_at": "2026-11-28 18:04",
+  "currentSeasonLabel": "2026 - 27 シーズン (16試合消化時点)",
   "currentPoints": [
     3,
     6,
@@ -17,7 +17,7 @@
     28,
     31,
     31,
-    null,
+    34,
     null,
     null,
     null,
@@ -342,6 +342,27 @@
       },
       "match_num": 15,
       "cumulative_pts": 31
+    },
+    {
+      "section": "第17節",
+      "date": "11/28",
+      "kickoff": "16:00",
+      "stadium": "三協フロンテア柏スタジアム",
+      "opponent": "広島",
+      "ha": "H",
+      "score": "3 - 1",
+      "result": "WIN",
+      "pts": 3,
+      "scorers": {
+        "my_team": [
+          "久保 藤次郎 前 24' 藤尾 翔太 前 28' 山之内 佑成 後 12'"
+        ],
+        "opponent": [
+          "セバスティアン アレー 前 19'"
+        ]
+      },
+      "match_num": 16,
+      "cumulative_pts": 34
     }
   ],
   "avgPace": [
